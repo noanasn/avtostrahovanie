@@ -4,8 +4,7 @@ header("Content-Disposition: attachment;Filename=Автомобили.xls");
 header("Contente-Transfer-Encoding: binary");
 echo "<meta charset='UTF-8'>";
 
-$db = mysqli_connect("localhost", "root2", "12345", "avtostrahovanie");
-mysqli_query($db, "set names utf8");
+include $_SERVER["DOCUMENT_ROOT"]."/connect.php";
 $cars_of_data = mysqli_query($db, "SELECT * FROM `avto`");
 ?>
 

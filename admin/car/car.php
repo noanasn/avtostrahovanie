@@ -1,13 +1,15 @@
 <link rel="stylesheet" href="../styles/handbooks.css">
 
 <?
-include("../../connect.php");
+include $_SERVER["DOCUMENT_ROOT"] . "/connect.php";
 $cars_of_data = mysqli_query($db, "SELECT * FROM `avto`");
 ?>
 
 
 <table>
     <tr>
+        <th scope='col'>✖</th>
+        <th scope='col'>✓</th>
         <th scope='col'>#</th>
         <th scope='col'>Прицеп</th>
         <th scope='col'>VIN</th>
@@ -28,19 +30,32 @@ $cars_of_data = mysqli_query($db, "SELECT * FROM `avto`");
         $sobstv_data  = mysqli_query($db, "SELECT * FROM `sobstvennic`");
         ?>
 
-        <tr>
+        <form action="delete_car.php" method="post">
+            <tr>
+                <td>
+                    <input type="submit" value="✖">
+                    <input type="hidden" value=<? echo "$cars[id]" ?> name="car_id">
+                    <input type="hidden" name='delete'>
+                </td>
+        </form>
+        <form action="update_car.php" method="post">
+            <td>
+                <input type="submit" value="✓">
+                <input type="hidden" value=<? echo $cars['id'] ?> name="car_id">
+                <input type="hidden" name='update'>
+            </td>
             <td><? echo $cars['id'] ?></td>
-            <td><input type='checkbox' <? if ($cars['Pricep']) {
-                                            echo "checked";
-                                        } ?>></td>
-            <td><input type='text' value=<? echo $cars['VIN'] ?>></td>
-            <td><input type='text' value=<? echo $cars['Gos_Znak'] ?>></td>
-            <td><input type='text' value=<? echo $cars['Power'] ?>></td>
-            <td><input type='text' value=<? echo $cars['Doc_type'] ?>></td>
-            <td><input type='text' value=<? echo $cars['Doc_series'] ?>></td>
-            <td><input type='text' value=<? echo $cars['Doc_number'] ?>></td>
+            <td><input name="pricep" type='checkbox' <? if ($cars['Pricep']) {
+                                                            echo "checked";
+                                                        } ?>></td>
+            <td><input type='text' name="vin" value=<? echo $cars['VIN'] ?>></td>
+            <td><input name="gos_znak" type='text' value=<? echo $cars['Gos_Znak'] ?>></td>
+            <td><input name="power" type='text' value=<? echo $cars['Power'] ?>></td>
+            <td><input name="doc_type" type='text' value=<? echo $cars['Doc_type'] ?>></td>
+            <td><input name="doc_series" type='text' value=<? echo $cars['Doc_series'] ?>></td>
+            <td><input name="doc_number" type='text' value=<? echo $cars['Doc_number'] ?>></td>
 
-            <td><select name='marka' id='select'>
+            <td><select name='idMarka' id='select'>
                     <? while ($marks = mysqli_fetch_array($marks_data)) {
                         if ($cars['idMarka'] === $marks['id']) {
                             echo "<option value = $marks[id] selected>$marks[Nazvanie]</option>";
@@ -51,7 +66,7 @@ $cars_of_data = mysqli_query($db, "SELECT * FROM `avto`");
                     ?>
                 </select></td>
 
-            <td><select name='model' id='select'>
+            <td><select name='idModel' id='select'>
                     <? while ($model = mysqli_fetch_array($models_data)) {
                         if ("$cars[idModel]" === "$model[id]") {
                             echo "<option value = $model[id] selected>$model[Nazvanie]</option>";
@@ -62,7 +77,7 @@ $cars_of_data = mysqli_query($db, "SELECT * FROM `avto`");
                     ?>
                 </select></td>
 
-            <td><select name='sobstvennic' id='select' class='names'>
+            <td><select name='idSobstvennic' id='select' class='names'>
                     <? while ($sobstv = mysqli_fetch_array($sobstv_data)) {
                         $fio = $sobstv['Surname'] . " " . mb_substr($sobstv['Name'], 0, 1) . "." . mb_substr($sobstv['Patronymic'], 0, 1) . ".";
                         if ("$cars[idSobstvennic]" === "$sobstv[id]") {
@@ -73,14 +88,61 @@ $cars_of_data = mysqli_query($db, "SELECT * FROM `avto`");
                     }
                     ?>
                 </select></td>
-        </tr>
+            </tr>
+        </form>
     <? } ?>
+    <form action="insert_car.php" method="post">
+        <tr>
+            <td></td>
+            <td><input type="submit" value="+"></td>
+            <input type="hidden" name='insert'>
+            <td></td>
+            <th scope='col'><input type="checkbox" name="pricep"></th>
+            <th scope='col'><input type="text" name="vin"></th>
+            <th scope='col'><input type="text" name="gos_znak"></th>
+            <th scope='col'><input type="text" name="power"></th>
+            <th scope='col'><input type="text" name="doc_type"></th>
+            <th scope='col'><input type="text" name="doc_series"></th>
+            <th scope='col'><input type="text" name="doc_number"></th>
+            <th scope='col'>
+                <select name="idMarka">
+                    <?
+                    $marka_row_data  = mysqli_query($db, "SELECT * FROM `marka`");
+                    while ($marka_data = mysqli_fetch_array($marka_row_data)) {
+                        echo "<option value = $marka_data[id]>$marka_data[Nazvanie]</option>";
+                    }
+                    ?>
+                </select>
+            </th>
+            <th scope='col'>
+                <select name="idModel">
+                    <?
+                    $model_row_data = mysqli_query($db, "SELECT * FROM `model`");
+                    while ($model_data = mysqli_fetch_array($model_row_data)) {
+                        echo "<option value = $model_data[id]>$model_data[Nazvanie]</option>";
+                    }
+                    ?>
+                </select>
+            </th>
+            <td>
+                <select name='idSobstvennic' id='select' class='names'>
+                    <?
+                    $sobstv_data  = mysqli_query($db, "SELECT * FROM `sobstvennic`");
+                    while ($sobstv = mysqli_fetch_array($sobstv_data)) {
+                        $fio = $sobstv['Surname'] . " " . mb_substr($sobstv['Name'], 0, 1) . "." . mb_substr($sobstv['Patronymic'], 0, 1) . ".";
+                        echo "<option value = $sobstv[id]>$fio</option>";
+                    }
+                    ?>
+                </select>
+            </td>
+        </tr>
+    </form>
 </table>
-    <input type="submit" name="submit" value="excel" onclick="ex()">
+<input type="submit" name="submit" value="excel" onclick="ex()">
 
 <script>
     function ex() {
-        id=window.open("excel.php");
+        id = window.open("excel.php");
         id.focus();
         id.document.close();
     }
