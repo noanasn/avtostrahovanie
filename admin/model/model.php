@@ -35,9 +35,10 @@
                                                 while ($marka_data = mysqli_fetch_array($marka_row_data)) {
                                                     if ("$model_data[idMarka]" === "$marka_data[id]") {
                                                         echo "<option value = $marka_data[id] selected>$marka_data[Nazvanie]</option>";
-                                                    }
+                                                    } else {
                                                     echo "<option value = $marka_data[id]>$marka_data[Nazvanie]</option>";
-                                                } 
+                                                    }
+                                                }
                                                 mysqli_free_result($marka_row_data);
                                                 ?>
                         </select></td>
