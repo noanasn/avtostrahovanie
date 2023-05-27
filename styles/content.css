@@ -1,0 +1,10 @@
+/* Commentary???? */
+#main {background-color: rgb(241, 245, 189);}
+#tables {background-color: rgb(128, 60, 71)}
+#services {background-color: lightskyblue;}
+#news {background-color: grey;}
+#photos {background-color: lightgreen;}
+#rules {background-color: lightpink;}
+.content {
+    height: 100vh;
+}

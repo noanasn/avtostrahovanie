@@ -1,0 +1,46 @@
+/* Nash style */
+section {
+    background-color: aquamarine;
+    background-size: cover;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center center;
+    }
+    
+    
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 18%;
+    
+    box-shadow: 0 5px 15px rgba(0,0,0,.2);
+    }
+    ul {
+        list-style-type: none;
+        display: flex;
+        flex-flow: nowrap;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        transition: .5s;
+    
+    }
+    ul li a {
+    
+    padding: 10px 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #262625;
+    font-weight: bold;
+    }
+    ul li a:hover {
+        background-color: black;
+        color: #fff;
+        transition: .5s
+    }
+
+
+
+    /* kakoy to commentaryi */
