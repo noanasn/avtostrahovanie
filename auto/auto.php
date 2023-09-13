@@ -1,9 +1,13 @@
+<?php
+include $_SERVER["DOCUMENT_ROOT"] . "./index.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../styles/auth.css">
+    <link rel="stylesheet" href="../styles/header.css">
     <title>Document</title>
 </head>
 

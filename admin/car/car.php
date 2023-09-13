@@ -1,7 +1,8 @@
-<link rel="stylesheet" href="../styles/handbooks.css">
+<link rel="stylesheet" href="../style.css">
 
 <?
 include $_SERVER["DOCUMENT_ROOT"] . "/connect.php";
+include $_SERVER["DOCUMENT_ROOT"] . "./admin/admin.html";
 $cars_of_data = mysqli_query($db, "SELECT * FROM `avto`");
 ?>
 
