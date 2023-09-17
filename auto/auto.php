@@ -9,9 +9,11 @@ include $_SERVER["DOCUMENT_ROOT"] . "/header.html";
     <meta charset="UTF-8">
     <title>Авторизация</title>
     <!-- MDB -->
-    <link rel="stylesheet" href="/mdb/css/mdb.min.css" />
+    <link rel="stylesheet" href="../mdb/css/mdb.min.css" />
     <!-- Custom styles -->
-    <link rel="stylesheet" href="/mdb/css/style.css" />
+    <link rel="stylesheet" href="../mdb/css/style.css" />
+
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"> -->
 </head>
 
 <body>
@@ -29,7 +31,7 @@ include $_SERVER["DOCUMENT_ROOT"] . "/header.html";
     </div> -->
     <form action="session.php" method="post">
         <section class="intro">
-            <div class="mask d-flex align-items-center h-100" style="background-color: #D6D6D6; margin-top:60px;">
+            <div class="mask d-flex align-items-center h-100" style="background-color: #D6D6D6; margin-top:300px;">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -68,7 +70,7 @@ include $_SERVER["DOCUMENT_ROOT"] . "/header.html";
             </div>
         </section>   
     </form>
-    <script src="/mdb/js/mdb.min.js"></script>
+    <script src="../mdb/js/mdb.min.js"></script>
 
 </body>
 
