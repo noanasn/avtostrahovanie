@@ -6,10 +6,10 @@
     <title>Авторизация</title>
     <link rel="stylesheet" href="../mdb/css/mdb.min.css" />
     <link rel="stylesheet" href="../mdb/css/style.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
 </head>
 
 <body>
-<?php require "../header.php"; ?>
     <!-- <div class="form_auth_block">
         <div class="form_auth_block_content">
             <p class="form_auth_block_head_text">Авторизация</p>
@@ -24,11 +24,12 @@
     </div> -->
     <form action="session.php" method="post">
         <section class="intro">
-            <div class="mask d-flex align-items-center h-100" style="background-color: #D6D6D6; margin-top:300px;">
+            <div class="mask d-flex align-items-center h-100" style="background-color: #D6D6D6">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-12 col-md-8 col-lg-6 col-xl-5">
                             <div class="card" style="border-radius: 1rem;">
+<?php require "../header.php"; ?>
                                 <div class="card-body p-5 text-center">
 
                                     <div class="my-md-5 pb-5">
