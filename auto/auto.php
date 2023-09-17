@@ -1,22 +1,15 @@
-<?php
-// include 'header.html'; 
-include $_SERVER["DOCUMENT_ROOT"] . "/header.html";
-?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <title>Авторизация</title>
-    <!-- MDB -->
     <link rel="stylesheet" href="../mdb/css/mdb.min.css" />
-    <!-- Custom styles -->
     <link rel="stylesheet" href="../mdb/css/style.css" />
-
-    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"> -->
 </head>
 
 <body>
+<?php require "../header.php"; ?>
     <!-- <div class="form_auth_block">
         <div class="form_auth_block_content">
             <p class="form_auth_block_head_text">Авторизация</p>
@@ -71,7 +64,6 @@ include $_SERVER["DOCUMENT_ROOT"] . "/header.html";
         </section>   
     </form>
     <script src="../mdb/js/mdb.min.js"></script>
-
 </body>
 
 </html>
