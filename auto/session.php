@@ -7,7 +7,7 @@ if (!empty($_REQUEST['pass']) and !empty($_REQUEST['log'])) {
     $login = $_REQUEST['log'];
     $password = $_REQUEST['pass'];
 }
-$query = "SELECT * FROM avtostrahovanie.sotrudnik WHERE login = '$login' and password = '$password'";
+$query = "SELECT * FROM avtostrahovanie.user WHERE login = '$login' and password = '$password'";
 $result = mysqli_query($db, $query);
 $user = mysqli_fetch_row($result);
 $role = $user[7];
@@ -27,6 +27,7 @@ if (!empty($user)) {
         $_SESSION['login'] = $user[5];
         $_SESSION['password'] = $user[6];
         $_SESSION['status'] = $user[7];
+        $_SESSION['VIN'] = $user[8];
         echo '<script>document.location.href="../index.php"</script>';
     }
 } else {
