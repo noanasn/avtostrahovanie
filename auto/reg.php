@@ -11,7 +11,8 @@ $queryuser = mysqli_query($db,"INSERT INTO sotrudnik(Surname,Name,Patronymic,Bir
 
 if($queryuser){
     echo "<script>alert('Успешно')</script>";
-    echo '<meta http-equiv="refresh" content=0;url=auto.php>';
+    // echo '<meta http-equiv="refresh" content=0;url=auto.php>';
+    echo '<script>document.location.href = "auto.php"</script>';
 }
 else
 echo "<script>alert('Что-то пошло не так')</script>";

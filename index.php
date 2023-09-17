@@ -1,39 +1,34 @@
+<?
+include $_SERVER["DOCUMENT_ROOT"] . "./header.html";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <title>Автострахование</title>
 </head>
+<style>
+    .div-1 {
+        background-color: #53699e;
+        height: 250px;
+    }
+    
+    .div-2 {
+    	background-color: #acadd2;
+        height: 250px;
+    }
+    
+    .div-3 {
+    	background-color: #312c4d;
+        height: 250px;
+    }
+</style>
 
 <body>
-    <section>
-        <header>
-            <div class="logo">
-                <a href="/">Автострахование</a>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#main">Главная</a></li>
-                    <li><a href="#tables">Таблички</a></li>
-                    <li><a href="#services">Услуги</a></li>
-                    <li><a href="#news">Новости</a></li>
-                    <li><a href="#photos">Фотографии</a></li>
-                    <li><a href="auto/reg.html">Регистрация</a></li>
-                    <li><a href="auto/auto.php">Вход</a></li>
-                </ul>
-            </nav>
-        </header>
-    </section>
-    <div class="content" id="main"></div>
-    <div class="content" id="tables"></div>
-    <div class="content" id="services"></div>
-    <div class="content" id="news"></div>
-    <div class="content" id="photos"></div>
-    <div class="content" id="rules"></div>
-
-
+    <div class="div-1"></div>
+    <div class="div-2"></div>
+    <div class="div-3"></div>
 </body>
 
 </html>

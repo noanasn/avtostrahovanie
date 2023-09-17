@@ -32,7 +32,7 @@ if (!empty($user)) {
 } else {
 
     echo "<script>alert('Введен неверный логин или пароль!')</script>";
-    // echo '<script>document.location.href = "auto.php"</script>';
+    echo '<script>document.location.href = "auto.php"</script>';
     // exit ("Введённые логин или пароль неверны");
     
 }
