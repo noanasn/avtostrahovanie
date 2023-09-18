@@ -1,4 +1,4 @@
 <?
-    $db = mysqli_connect("localhost", "root", "12345", "avtostrahovanie");
+    $db = new mysqli('localhost', 'root', '', 'avtostrah');
     mysqli_query($db, "set names utf8");
 ?>

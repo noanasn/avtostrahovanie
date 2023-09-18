@@ -25,33 +25,31 @@
         <!-- Collapsible wrapper -->
 
         <!-- Right elements -->
-        <!-- <div class="d-flex align-items-center"> -->
-        <!-- Icon -->
-        <!-- <a class="text-reset me-3" href="#">qwerty
-            <i class="fas fa-shopping-cart"></i>
-          </a> -->
-        <!-- Avatar -->
-        <div class="dropdown">
-          <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
-            <i class="far fa-user fa-2x" style="color: rgb(71, 73, 74);"></i>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
-            <li>
-              <a class="dropdown-item" href="../auto/auto.php">Вход <i class="fas fa-sign-in-alt" style="color: rgb(71, 73, 74);"></i></a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="../auto/reg2.php">Регистрация
-                <!--<i class="fas fa-user-plus"  style="color: rgb(71, 73, 74);"></i>--> </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="../auto/logout.php">Выход <i class="fas fa-sign-out-alt" style="color: rgb(71, 73, 74);"></i></a>
-            </li>
-          </ul>
+        <div class="d-flex align-items-center">
+          <!-- Icon -->
+          <a class="nav-link mx-3" href="../index.php"><?= $_SESSION['login']; ?></a>
+          <!-- Avatar -->
+          <div class="dropdown">
+            <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+              <i class="far fa-user fa-2x" style="color: rgb(71, 73, 74);"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+              <li>
+                <a class="dropdown-item" href="../auto/auto.php">Вход <i class="fas fa-sign-in-alt" style="color: rgb(71, 73, 74);"></i></a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="../auto/reg2.php">Регистрация
+                  <!--<i class="fas fa-user-plus"  style="color: rgb(71, 73, 74);"></i>--> </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="../auto/logout.php">Выход <i class="fas fa-sign-out-alt" style="color: rgb(71, 73, 74);"></i></a>
+              </li>
+            </ul>
+          </div>
+          <!-- </div> -->
+          <!-- Right elements -->
         </div>
-        <!-- </div> -->
-        <!-- Right elements -->
-      </div>
-      <!-- Container wrapper -->
+        <!-- Container wrapper -->
     </nav>
     <!-- Navbar -->
   </header>

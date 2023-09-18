@@ -3,13 +3,14 @@
 // Инициализируем сессию 
 session_start();
 
-// Удаляем данные сессии
-$_SESSION = [];
+$session_data = json_encode($_SESSION);
+echo "<script>console.log('$session_data');</script>";
 
-// Удаляем идентификатор сессии 
+unset($_SESSION);
+
+$session_data = json_encode($_SESSION);
+echo "<script>console.log('$session_data');</script>";
+
+header("Location: /auto/auto.php");
+
 session_destroy();
-
-// Перенаправляем на страницу входа
-// header("Location: ./index.php"); 
-echo '<script>document.location.href = "../index.php"</script>';
-exit();
