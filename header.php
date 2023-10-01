@@ -10,7 +10,7 @@
 
         <!-- Collapsible wrapper -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <!-- Navbar brand -->
+          <!-- Navbar logo -->
           <a class="navbar-brand mt-2 mt-lg-0" href="../index.php">
             <img src="/img/logo.png" height="35" alt="Avtostrahovanie Logo" loading="lazy" />
           </a>
@@ -19,6 +19,63 @@
             <li class="nav-item">
               <a class="nav-link" href="../index.php">Главная</a>
             </li>
+            <!-- эксперименты -->
+            <!--  Проверить значение переменной 'login' в сессии -->
+            <? if ($_SESSION['role']  == 'Администратор') {
+              // Если 'login' равен 'admin', показать элемент
+              echo '<div class="container-fluid">
+              <ul class="navbar-nav">
+              <!-- Раздел таблицы для администратора -->
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                    Таблицы</a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li>
+                      <a class="dropdown-item" href="/admin/car/car.php">Автомобили</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="/admin/drivers/drivers.php">Водители</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="/admin/marka/marka.php">Марки</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="/admin/model/model.php">Модели</a>
+                    </li> 
+                    <li>
+                      <a class="dropdown-item" href="/admin/sobstvennic/sobstvennic.php">Собственники</a>
+                    </li> 
+                    <li>
+                      <a class="dropdown-item" href="/admin/sotrudnik/sotrudnik.php">Сотрудники</a>
+                    </li> 
+                    <li>
+                      <a class="dropdown-item" href="/admin/strahovatel/strahovatel.php">Страхователи</a>
+                    </li> 
+                    <li>
+                      <a class="dropdown-item" href="/admin/strah_polis.php">Страховые полиса</a>
+                    </li>
+                  </ul>
+                </li>
+                <!-- Раздел отчеты для администратора -->
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                    Отчеты</a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li>
+                      <a class="dropdown-item" href="">СП оформленные за период</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="">СП оформленные сотрудником</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>';
+            } else {
+              // Если 'login' не равен 'admin', не показывать элемент
+            }
+            ?>
+            <!-- эксперименты -->
           </ul>
           <!-- Left links -->
         </div>
@@ -27,7 +84,11 @@
         <!-- Right elements -->
         <div class="d-flex align-items-center">
           <!-- Icon -->
-          <a class="nav-link mx-3" href="../index.php"><?= $_SESSION['login']; ?></a>
+          <a class="nav-link mx-3" href="../index.php"><? if ($_SESSION['role']  == 'Администратор') {
+                                                          echo 'Администратор';
+                                                        } else {
+                                                          echo $_SESSION['login'];
+                                                        } ?></a>
           <!-- Avatar -->
           <div class="dropdown">
             <a class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
@@ -38,8 +99,7 @@
                 <a class="dropdown-item" href="../auto/auto.php">Вход <i class="fas fa-sign-in-alt" style="color: rgb(71, 73, 74);"></i></a>
               </li>
               <li>
-                <a class="dropdown-item" href="../auto/reg2.php">Регистрация
-                  <!--<i class="fas fa-user-plus"  style="color: rgb(71, 73, 74);"></i>--> </a>
+                <a class="dropdown-item" href="../auto/reg2.php">Регистрация</a>
               </li>
               <li>
                 <a class="dropdown-item" href="../auto/logout.php">Выход <i class="fas fa-sign-out-alt" style="color: rgb(71, 73, 74);"></i></a>

@@ -11,6 +11,6 @@ unset($_SESSION);
 $session_data = json_encode($_SESSION);
 echo "<script>console.log('$session_data');</script>";
 
-header("Location: /auto/auto.php");
+header("Location: ../index.php");
 
 session_destroy();

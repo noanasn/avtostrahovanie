@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/mdb/css/mdb.min.css">
     <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"> -->
     <link rel="stylesheet" href="mdb/css/icons.css">
-    <?php  ?>
+    <?php session_start(); ?>
 </head>
 <style>
     .div-1 {

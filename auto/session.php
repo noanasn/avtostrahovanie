@@ -17,7 +17,8 @@ if (!empty($user)) {
     $_SESSION['role'] = $role;
     $_SESSION['id_user'] = $id_user;
     if ($role == 'Администратор') {
-        echo '<script>document.location.href = "../admin/admin.html"</script>';
+        // echo '<script>document.location.href = "../admin/admin.html"</script>';
+        echo '<script>document.location.href = "../index.php"</script>';
     } else if ($role == 'Оператор') {
         $_SESSION['id_user'] = $user[0];
         $_SESSION['surname'] = $user[1]; 
