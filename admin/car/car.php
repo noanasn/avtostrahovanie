@@ -1,13 +1,31 @@
-<link rel="stylesheet" href="../style.css">
-
+<!-- <link rel="stylesheet" href="../style.css"> -->
+<link rel="stylesheet" href="../../mdb/css/mdb.min.css" />
+<link rel="stylesheet" href="../../mdb/css/style.css" />
+<link rel="stylesheet" href="../../mdb/css/icons.css">
 <?
 include $_SERVER["DOCUMENT_ROOT"] . "/connect.php";
-include $_SERVER["DOCUMENT_ROOT"] . "./admin/admin.html";
+session_start();
+// include $_SERVER["DOCUMENT_ROOT"] . "./admin/admin.html";
+require "../../header.php";
 $cars_of_data = mysqli_query($db, "SELECT * FROM `avto`");
+
 ?>
 
+<style>
+    th, td {
+  padding: 8px; /* Отступ внутри ячеек */
+  text-align: left; /* Выравнивание текста в ячейках */
+  border: 1px solid #ddd; /* Граница ячеек */
+}
 
-<table>
+/* Пример для колонок с элементами <input> */
+input[type="text"] {
+  width: 100%; /* Ширина элементов <input> внутри ячеек */
+}
+
+</style>
+
+<table  style="margin-top:61.6px ;">
     <tr>
         <th scope='col'>✖</th>
         <th scope='col'>✓</th>
@@ -15,7 +33,7 @@ $cars_of_data = mysqli_query($db, "SELECT * FROM `avto`");
         <th scope='col'>Прицеп</th>
         <th scope='col'>VIN</th>
         <th scope='col'>Гос.Номер</th>
-        <th scope='col'>Мощность</th>
+        <th style="width: 25px;" scope='col'>Мощность</th>
         <th scope='col'>Тип документа</th>
         <th scope='col'>Серия документа</th>
         <th scope='col'>Номер документа</th>
@@ -49,9 +67,9 @@ $cars_of_data = mysqli_query($db, "SELECT * FROM `avto`");
             <td><input name="pricep" type='checkbox' <? if ($cars['Pricep']) {
                                                             echo "checked";
                                                         } ?>></td>
-            <td><input type='text' name="vin" value=<? echo $cars['VIN'] ?>></td>
+            <td><input size="20" name="vin" type='text' value=<? echo $cars['VIN'] ?>></td>
             <td><input name="gos_znak" type='text' value=<? echo $cars['Gos_Znak'] ?>></td>
-            <td><input name="power" type='text' value=<? echo $cars['Power'] ?>></td>
+            <td width=5><input size = "5" name="power" type='text' value=<? echo $cars['Power'] ?>></td>
             <td><input name="doc_type" type='text' value=<? echo $cars['Doc_type'] ?>></td>
             <td><input name="doc_series" type='text' value=<? echo $cars['Doc_series'] ?>></td>
             <td><input name="doc_number" type='text' value=<? echo $cars['Doc_number'] ?>></td>
@@ -140,7 +158,7 @@ $cars_of_data = mysqli_query($db, "SELECT * FROM `avto`");
     </form>
 </table>
 <input type="submit" name="submit" value="excel" onclick="ex()">
-
+<script src="../../mdb/js/mdb.min.js"></script>
 <script>
     function ex() {
         id = window.open("excel.php");

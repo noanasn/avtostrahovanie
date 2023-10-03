@@ -11,23 +11,23 @@
         <!-- Collapsible wrapper -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <!-- Navbar logo -->
-          <a class="navbar-brand mt-2 mt-lg-0" href="../index.php">
-            <img src="/img/logo.png" height="35" alt="Avtostrahovanie Logo" loading="lazy" />
+          <a class="navbar-brand mt-2 mt-lg-0" href="/index.php">
+            <img src="/img/logo.png" height="34" alt="Avtostrahovanie Logo" loading="lazy" />
           </a>
           <!-- Left links -->
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="../index.php">Главная</a>
+              <a class="nav-link" href="/index.php">Главная</a>
             </li>
             <!-- эксперименты -->
             <!--  Проверить значение переменной 'login' в сессии -->
             <? if ($_SESSION['role']  == 'Администратор') {
               // Если 'login' равен 'admin', показать элемент
-              echo '<div class="container-fluid">
+              echo '
               <ul class="navbar-nav">
               <!-- Раздел таблицы для администратора -->
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                  <a class="nav-link dropdown d-flex align-items-center" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
                     Таблицы</a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <li>
@@ -69,8 +69,7 @@
                     </li>
                   </ul>
                 </li>
-              </ul>
-            </div>';
+              </ul>';
             } else {
               // Если 'login' не равен 'admin', не показывать элемент
             }
@@ -96,13 +95,13 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
               <li>
-                <a class="dropdown-item" href="../auto/auto.php">Вход <i class="fas fa-sign-in-alt" style="color: rgb(71, 73, 74);"></i></a>
+                <a class="dropdown-item" href="/auto/auto.php">Вход <i class="fas fa-sign-in-alt" style="color: rgb(71, 73, 74);"></i></a>
               </li>
               <li>
-                <a class="dropdown-item" href="../auto/reg2.php">Регистрация</a>
+                <a class="dropdown-item" href="/auto/reg2.php">Регистрация</a>
               </li>
               <li>
-                <a class="dropdown-item" href="../auto/logout.php">Выход <i class="fas fa-sign-out-alt" style="color: rgb(71, 73, 74);"></i></a>
+                <a class="dropdown-item" href="/auto/logout.php">Выход <i class="fas fa-sign-out-alt" style="color: rgb(71, 73, 74);"></i></a>
               </li>
             </ul>
           </div>
