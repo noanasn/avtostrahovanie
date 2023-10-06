@@ -1,45 +1,43 @@
-<!-- <link rel="stylesheet" href="../style.css"> -->
 <link rel="stylesheet" href="../../mdb/css/mdb.min.css" />
-<link rel="stylesheet" href="../../mdb/css/style.css" />
 <link rel="stylesheet" href="../../mdb/css/icons.css">
 <?
 include $_SERVER["DOCUMENT_ROOT"] . "/connect.php";
 session_start();
-// include $_SERVER["DOCUMENT_ROOT"] . "./admin/admin.html";
 require "../../header.php";
 $cars_of_data = mysqli_query($db, "SELECT * FROM `avto`");
-
 ?>
 
 <style>
-    th, td {
-  padding: 8px; /* Отступ внутри ячеек */
-  text-align: left; /* Выравнивание текста в ячейках */
-  border: 1px solid #ddd; /* Граница ячеек */
-}
-
-/* Пример для колонок с элементами <input> */
-input[type="text"] {
-  width: 100%; /* Ширина элементов <input> внутри ячеек */
-}
-
+    td {
+        padding: 8px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+    th {
+        padding: 8px;
+        text-align: center;
+        border: 1px solid #ddd;
+    }
+    input[type="text"] {
+        width: 100%;
+    }
 </style>
 
-<table  style="margin-top:61.6px ;">
+<table style="margin-top:61.6px ;">
     <tr>
         <th scope='col'>✖</th>
         <th scope='col'>✓</th>
         <th scope='col'>#</th>
         <th scope='col'>Прицеп</th>
-        <th scope='col'>VIN</th>
+        <th width="200px" scope='col'>VIN</th>
         <th scope='col'>Гос.Номер</th>
-        <th style="width: 25px;" scope='col'>Мощность</th>
+        <th scope='col'>Мощность</th>
         <th scope='col'>Тип документа</th>
         <th scope='col'>Серия документа</th>
         <th scope='col'>Номер документа</th>
-        <th scope='col'>idMarka</th>
-        <th scope='col'>idModel</th>
-        <th scope='col'>idSobstvennic</th>
+        <th scope='col'>Марка</th>
+        <th scope='col'>Модель</th>
+        <th scope='col'>Собственник</th>
     </tr>
 
     <? while ($cars = mysqli_fetch_array($cars_of_data)) { ?>
@@ -49,12 +47,12 @@ input[type="text"] {
         $sobstv_data  = mysqli_query($db, "SELECT * FROM `sobstvennic`");
         ?>
 
-        <form action="delete_car.php" method="post">
+        <form action="delete_car.php" method="post" id="delete_form">
             <tr>
                 <td>
                     <input type="submit" value="✖">
                     <input type="hidden" value=<? echo "$cars[id]" ?> name="car_id">
-                    <input type="hidden" name='delete'>
+                    <input type="hidden" name='delete' id="delete_btn">
                 </td>
         </form>
         <form action="update_car.php" method="post">
@@ -64,13 +62,24 @@ input[type="text"] {
                 <input type="hidden" name='update'>
             </td>
             <td><? echo $cars['id'] ?></td>
-            <td><input name="pricep" type='checkbox' <? if ($cars['Pricep']) {
-                                                            echo "checked";
-                                                        } ?>></td>
-            <td><input size="20" name="vin" type='text' value=<? echo $cars['VIN'] ?>></td>
+            <td class="align-middle text-center"><input name="pricep" type='checkbox' <? if ($cars['Pricep']) {
+                                                                                            echo "checked";
+                                                                                        } ?>></td>
+            <td><input name="vin" type='text' value=<? echo $cars['VIN'] ?>></td>
             <td><input name="gos_znak" type='text' value=<? echo $cars['Gos_Znak'] ?>></td>
-            <td width=5><input size = "5" name="power" type='text' value=<? echo $cars['Power'] ?>></td>
-            <td><input name="doc_type" type='text' value=<? echo $cars['Doc_type'] ?>></td>
+            <td><input name="power" type='text' value=<? echo $cars['Power'] ?>></td>
+            <!-- <td><input name="doc_type" type='text' value= echo $cars['Doc_type'] ?>></td> -->
+            <td><select style="width: 100%;" name="doc_type">
+                    <?
+                    if ($cars['Doc_type'] === "СТС") {
+                        echo "<option value = 'СТС' selected>СТС</option>";
+                        echo "<option value = 'ПТС'>ПТС</option>";
+                    } else {
+                        echo "<option value = 'ПТС' selected >ПТС</option>";
+                        echo "<option value = 'СТС'>СТС</option>";
+                    }
+                    ?>
+                </select></td>
             <td><input name="doc_series" type='text' value=<? echo $cars['Doc_series'] ?>></td>
             <td><input name="doc_number" type='text' value=<? echo $cars['Doc_number'] ?>></td>
 
@@ -120,7 +129,13 @@ input[type="text"] {
             <th scope='col'><input type="text" name="vin"></th>
             <th scope='col'><input type="text" name="gos_znak"></th>
             <th scope='col'><input type="text" name="power"></th>
-            <th scope='col'><input type="text" name="doc_type"></th>
+            <!-- <th scope='col'><input type="text" name="doc_type"></th> -->
+            <th scope='col'>
+            <select style="width: 100%;" name="doc_type">
+                    <option value="СТС">СТС</option>
+                    <option value="ПТС">ПТС</option>
+                </select>
+            </th>
             <th scope='col'><input type="text" name="doc_series"></th>
             <th scope='col'><input type="text" name="doc_number"></th>
             <th scope='col'>

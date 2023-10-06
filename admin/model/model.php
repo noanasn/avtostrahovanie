@@ -1,14 +1,34 @@
-<link rel="stylesheet" href="../styles/handbooks.css">
+<link rel="stylesheet" href="../../mdb/css/mdb.min.css" />
+<link rel="stylesheet" href="../../mdb/css/icons.css">
 <div>
     <?
     include $_SERVER["DOCUMENT_ROOT"] . "/connect.php";
+    session_start();
+    require "../../header.php";
     $model_row_data = mysqli_query($db, "SELECT * FROM `model`");
-
     ?>
-    <table>
+    <style>
+        td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            padding: 8px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        input[type="text"] {
+            width: 100%;
+        }
+    </style>
+
+    <table style="margin-top:61.6px ;">
         <tr>
-            <th></th>
-            <th></th>
+            <th>✖</th>
+            <th>✓</th>
             <th>#</th>
             <th>Модель</th>
             <th>Марка</th>
@@ -36,7 +56,7 @@
                                                     if ("$model_data[idMarka]" === "$marka_data[id]") {
                                                         echo "<option value = $marka_data[id] selected>$marka_data[Nazvanie]</option>";
                                                     } else {
-                                                    echo "<option value = $marka_data[id]>$marka_data[Nazvanie]</option>";
+                                                        echo "<option value = $marka_data[id]>$marka_data[Nazvanie]</option>";
                                                     }
                                                 }
                                                 mysqli_free_result($marka_row_data);
@@ -64,3 +84,4 @@
         </form>
     </table>
 </div>
+<script src="../../mdb/js/mdb.min.js"></script>
