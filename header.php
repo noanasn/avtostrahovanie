@@ -54,6 +54,9 @@
                     <li>
                       <a class="dropdown-item" href="/admin/strah_polis.php">Страховые полиса</a>
                     </li>
+                    <li>
+                      <a class="dropdown-item" href="/admin/user/user.php">Пользователи</a>
+                    </li>
                   </ul>
                 </li>
                 <!-- Раздел отчеты для администратора -->
