@@ -52,7 +52,7 @@
                       <a class="dropdown-item" href="/admin/strahovatel/strahovatel.php">Страхователи</a>
                     </li> 
                     <li>
-                      <a class="dropdown-item" href="/admin/strah_polis.php">Страховые полиса</a>
+                      <a class="dropdown-item" href="/admin/strah_polis/strah_polis.php">Страховые полиса</a>
                     </li>
                     <li>
                       <a class="dropdown-item" href="/admin/user/user.php">Пользователи</a>
