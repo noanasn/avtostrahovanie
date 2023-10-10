@@ -66,6 +66,7 @@ $strahpol_of_data = mysqli_query($db, "SELECT * FROM `strah_polis`");
                 <input type="hidden" name='update'>
             </td>
             <td><? echo $strahpol['id'] ?></td>
+            <!-- Сделать SELECT на все возможные серии СП-->
             <td><input name="series" type='text' value=<? echo $strahpol['Series'] ?>></td>
             <td><input name="number" type='text' value=<? echo $strahpol['Number'] ?>></td>
             <td><input name="srok_strah_ot" type='date' value=<? echo $strahpol['Srok_Strah_Ot'] ?>></td>

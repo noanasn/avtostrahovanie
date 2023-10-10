@@ -65,10 +65,10 @@
                     Отчеты</a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <li>
-                      <a class="dropdown-item" href="">СП оформленные за период</a>
+                      <a class="dropdown-item" href="/admin/reports/SP_za_period/SP_za_period.php">СП оформленные за период</a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="">СП оформленные сотрудником</a>
+                      <a class="dropdown-item" href="/admin/reports/SP_po_sotr/SP_po_sotr.php">СП оформленные сотрудником</a>
                     </li>
                   </ul>
                 </li>
