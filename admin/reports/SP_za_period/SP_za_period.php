@@ -27,6 +27,10 @@ require "../../../header.php";
         width: 100%;
         table-layout: auto;
     }
+
+    h5 {
+        padding: 12px;
+    }
 </style>
 
 <div style="margin-top: 65px; padding:12px">
@@ -41,50 +45,176 @@ require "../../../header.php";
         </select>
         <label class="form-label select-label">Период</label>
         <select class="select" name="period" id="periodSelect">
-            <option value="1_kvart">1 Квартал</option>
-            <option value="2_kvart">2 Квартал</option>
-            <option value="3_kvart">3 Квартал</option>
-            <option value="4_kvart">4 Квартал</option>
-            <option value="half_year">Полугодие</option>
+            <option value="1">1 Квартал</option>
+            <option value="2">2 Квартал</option>
+            <option value="3">3 Квартал</option>
+            <option value="4">4 Квартал</option>
+            <option value="first_half_year">1 Полугодие</option>
+            <option value="second_half_year">2 Полугодие</option>
             <option value="9_mnth">9 месяцев</option>
             <option value="year">Год</option>
+            <option value="main">Задать период</option>
         </select>
         <input type="submit" name="show_table" value="Вывести">
     </form>
-
 </div>
 <?php
+$sql = "";
+$text = "";
 if (isset($_POST['show_table'])) {
-    $sotr_all  = mysqli_query($db, "SELECT * FROM `sotrudnik` where `id` = '$_POST[idSotrudnik]'");
-    $sotr_all_string = mysqli_fetch_array($sotr_all);
-    $sotr_fio = $sotr_all_string['Surname'] . " " . mb_substr($sotr_all_string['Name'], 0, 1) . "." . mb_substr($sotr_all_string['Patronymic'], 0, 1) . ".";
-    echo "<h5 style = 'padding: 12px;';>Страховые полиса, оформленные сотрудником $sotr_fio </h5>";
+    // Если выбран период : квартал
+    if ($_POST['period'] == '1' || $_POST['period'] == '2' || $_POST['period'] == '3' || $_POST['period'] == '4') {
+        $sql = "SELECT sp.id as '#', sp.Series as 'Серия', sp.Number as 'Номер',
+        sp.Srok_Strah_Ot as 'Страхование от', sp.Srok_Strah_Do as 'Страхование до',
+        sp.Date_Zakluch as 'Дата заключения', sp.Date_Vidach as 'Дата выдачи' ,
+        sp.Strah_Premiya as 'Страх. премия' ,
+        CONCAT(str.surname, ' ', SUBSTRING(str.name, 1, 1), '. ', SUBSTRING(str.patronymic, 1, 1), '.') as 'Страхователь',
+        CONCAT(sob.surname, ' ', SUBSTRING(sob.name, 1, 1), '. ', SUBSTRING(sob.patronymic, 1, 1), '.') as 'Собственник',
+        CONCAT(d.surname, ' ', SUBSTRING(d.name, 1, 1), '. ', SUBSTRING(d.patronymic, 1, 1), '.') as 'Водитель',
+        CONCAT(m.nazvanie, ' ', mo.nazvanie) as 'Авто',
+        CONCAT(sotr.surname, ' ', SUBSTRING(sotr.name, 1, 1), '. ', SUBSTRING(sotr.patronymic, 1, 1), '.') as 'Сотрудник'
+        FROM strah_polis as sp
+        JOIN avto as a ON sp.idAvto = a.id
+        JOIN marka as m ON a.idmarka = m.id
+        JOIN model as mo ON a.idmodel = mo.id
+        JOIN strahovatel as str ON sp.idstrahovatel = str.id
+        JOIN drivers as d ON sp.iddrivers = d.id
+        JOIN sobstvennic as sob ON a.idsobstvennic = sob.id
+        JOIN sotrudnik as sotr ON sp.idSotrudnik = sotr.id
+        WHERE YEAR(sp.Date_Vidach) = '$_POST[year]' AND QUARTER(sp.Date_Vidach) = '$_POST[period]'";
 
-    // SQL-запрос
-    $sql = "SELECT sp.id as '#', sp.Series as 'Серия', sp.Number as 'Номер',
-    sp.Srok_Strah_Ot as 'Страхование от', sp.Srok_Strah_Do as 'Страхование до',
-    sp.Date_Zakluch as 'Дата заключения', sp.Date_Vidach as 'Дата выдачи' ,
-    sp.Strah_Premiya as 'Страх. премия' ,
-    CONCAT(str.surname, ' ', SUBSTRING(str.name, 1, 1), '. ', SUBSTRING(str.patronymic, 1, 1), '.') as 'Страхователь',
-    CONCAT(sob.surname, ' ', SUBSTRING(sob.name, 1, 1), '. ', SUBSTRING(sob.patronymic, 1, 1), '.') as 'Собственник',
-    CONCAT(d.surname, ' ', SUBSTRING(d.name, 1, 1), '. ', SUBSTRING(d.patronymic, 1, 1), '.') as 'Водитель',
-    CONCAT(m.nazvanie, ' ', mo.nazvanie) as 'Авто',
-    CONCAT(sotr.surname, ' ', SUBSTRING(sotr.name, 1, 1), '. ', SUBSTRING(sotr.patronymic, 1, 1), '.') as 'Сотрудник'
-    FROM strah_polis as sp
-    JOIN avto as a ON sp.idAvto = a.id
-    JOIN marka as m ON a.idmarka = m.id
-    JOIN model as mo ON a.idmodel = mo.id
-    JOIN strahovatel as str ON sp.idstrahovatel = str.id
-    JOIN drivers as d ON sp.iddrivers = d.id
-    JOIN sobstvennic as sob ON a.idsobstvennic = sob.id
-    JOIN sotrudnik as sotr ON sp.idSotrudnik = sotr.id
-    WHERE sotr.id = '$_POST[idSotrudnik]'";
+        $text = "<h5>Страховые полиса, оформленные за $_POST[period] квартал $_POST[year] года.</h5>";
 
+        // Если выбран период : 1 полугодие
+    } else if ($_POST['period'] == 'first_half_year') {
+        $sql = "SELECT sp.id as '#', sp.Series as 'Серия', sp.Number as 'Номер',
+        sp.Srok_Strah_Ot as 'Страхование от', sp.Srok_Strah_Do as 'Страхование до',
+        sp.Date_Zakluch as 'Дата заключения', sp.Date_Vidach as 'Дата выдачи' ,
+        sp.Strah_Premiya as 'Страх. премия' ,
+        CONCAT(str.surname, ' ', SUBSTRING(str.name, 1, 1), '. ', SUBSTRING(str.patronymic, 1, 1), '.') as 'Страхователь',
+        CONCAT(sob.surname, ' ', SUBSTRING(sob.name, 1, 1), '. ', SUBSTRING(sob.patronymic, 1, 1), '.') as 'Собственник',
+        CONCAT(d.surname, ' ', SUBSTRING(d.name, 1, 1), '. ', SUBSTRING(d.patronymic, 1, 1), '.') as 'Водитель',
+        CONCAT(m.nazvanie, ' ', mo.nazvanie) as 'Авто',
+        CONCAT(sotr.surname, ' ', SUBSTRING(sotr.name, 1, 1), '. ', SUBSTRING(sotr.patronymic, 1, 1), '.') as 'Сотрудник'
+        FROM strah_polis as sp
+        JOIN avto as a ON sp.idAvto = a.id
+        JOIN marka as m ON a.idmarka = m.id
+        JOIN model as mo ON a.idmodel = mo.id
+        JOIN strahovatel as str ON sp.idstrahovatel = str.id
+        JOIN drivers as d ON sp.iddrivers = d.id
+        JOIN sobstvennic as sob ON a.idsobstvennic = sob.id
+        JOIN sotrudnik as sotr ON sp.idSotrudnik = sotr.id
+        WHERE YEAR(sp.Date_Vidach) = '$_POST[year]' AND MONTH(sp.Date_Vidach) BETWEEN 1 AND 6";
+
+        $text = "<h5>Страховые полиса, оформленные за 1 полугодие $_POST[year] года.</h5>";
+    }
+    // Если выбран период : 2 полугодие
+    else if ($_POST['period'] == 'second_half_year') {
+        $sql = "SELECT sp.id as '#', sp.Series as 'Серия', sp.Number as 'Номер',
+        sp.Srok_Strah_Ot as 'Страхование от', sp.Srok_Strah_Do as 'Страхование до',
+        sp.Date_Zakluch as 'Дата заключения', sp.Date_Vidach as 'Дата выдачи' ,
+        sp.Strah_Premiya as 'Страх. премия' ,
+        CONCAT(str.surname, ' ', SUBSTRING(str.name, 1, 1), '. ', SUBSTRING(str.patronymic, 1, 1), '.') as 'Страхователь',
+        CONCAT(sob.surname, ' ', SUBSTRING(sob.name, 1, 1), '. ', SUBSTRING(sob.patronymic, 1, 1), '.') as 'Собственник',
+        CONCAT(d.surname, ' ', SUBSTRING(d.name, 1, 1), '. ', SUBSTRING(d.patronymic, 1, 1), '.') as 'Водитель',
+        CONCAT(m.nazvanie, ' ', mo.nazvanie) as 'Авто',
+        CONCAT(sotr.surname, ' ', SUBSTRING(sotr.name, 1, 1), '. ', SUBSTRING(sotr.patronymic, 1, 1), '.') as 'Сотрудник'
+        FROM strah_polis as sp
+        JOIN avto as a ON sp.idAvto = a.id
+        JOIN marka as m ON a.idmarka = m.id
+        JOIN model as mo ON a.idmodel = mo.id
+        JOIN strahovatel as str ON sp.idstrahovatel = str.id
+        JOIN drivers as d ON sp.iddrivers = d.id
+        JOIN sobstvennic as sob ON a.idsobstvennic = sob.id
+        JOIN sotrudnik as sotr ON sp.idSotrudnik = sotr.id
+        WHERE YEAR(sp.Date_Vidach) = '$_POST[year]' AND MONTH(sp.Date_Vidach) BETWEEN 7 AND 12";
+
+        $text = "<h5>Страховые полиса, оформленные за 2 полугодие $_POST[year] года.</h5>";
+    }
+    // Если выбран период : год
+    else if ($_POST['period'] == 'year') {
+        $sql = "SELECT sp.id as '#', sp.Series as 'Серия', sp.Number as 'Номер',
+        sp.Srok_Strah_Ot as 'Страхование от', sp.Srok_Strah_Do as 'Страхование до',
+        sp.Date_Zakluch as 'Дата заключения', sp.Date_Vidach as 'Дата выдачи' ,
+        sp.Strah_Premiya as 'Страх. премия' ,
+        CONCAT(str.surname, ' ', SUBSTRING(str.name, 1, 1), '. ', SUBSTRING(str.patronymic, 1, 1), '.') as 'Страхователь',
+        CONCAT(sob.surname, ' ', SUBSTRING(sob.name, 1, 1), '. ', SUBSTRING(sob.patronymic, 1, 1), '.') as 'Собственник',
+        CONCAT(d.surname, ' ', SUBSTRING(d.name, 1, 1), '. ', SUBSTRING(d.patronymic, 1, 1), '.') as 'Водитель',
+        CONCAT(m.nazvanie, ' ', mo.nazvanie) as 'Авто',
+        CONCAT(sotr.surname, ' ', SUBSTRING(sotr.name, 1, 1), '. ', SUBSTRING(sotr.patronymic, 1, 1), '.') as 'Сотрудник'
+        FROM strah_polis as sp
+        JOIN avto as a ON sp.idAvto = a.id
+        JOIN marka as m ON a.idmarka = m.id
+        JOIN model as mo ON a.idmodel = mo.id
+        JOIN strahovatel as str ON sp.idstrahovatel = str.id
+        JOIN drivers as d ON sp.iddrivers = d.id
+        JOIN sobstvennic as sob ON a.idsobstvennic = sob.id
+        JOIN sotrudnik as sotr ON sp.idSotrudnik = sotr.id
+        WHERE YEAR(sp.Date_Vidach) = '$_POST[year]'";
+
+        $text = "<h5>Страховые полиса, оформленные за $_POST[year] год.</h5>";
+    }
+    // Если выбран период : задать период
+    else if ($_POST['period'] == 'main') {
+        $sql = "SELECT sp.id as '#', sp.Series as 'Серия', sp.Number as 'Номер',
+        sp.Srok_Strah_Ot as 'Страхование от', sp.Srok_Strah_Do as 'Страхование до',
+        sp.Date_Zakluch as 'Дата заключения', sp.Date_Vidach as 'Дата выдачи' ,
+        sp.Strah_Premiya as 'Страх. премия' ,
+        CONCAT(str.surname, ' ', SUBSTRING(str.name, 1, 1), '. ', SUBSTRING(str.patronymic, 1, 1), '.') as 'Страхователь',
+        CONCAT(sob.surname, ' ', SUBSTRING(sob.name, 1, 1), '. ', SUBSTRING(sob.patronymic, 1, 1), '.') as 'Собственник',
+        CONCAT(d.surname, ' ', SUBSTRING(d.name, 1, 1), '. ', SUBSTRING(d.patronymic, 1, 1), '.') as 'Водитель',
+        CONCAT(m.nazvanie, ' ', mo.nazvanie) as 'Авто',
+        CONCAT(sotr.surname, ' ', SUBSTRING(sotr.name, 1, 1), '. ', SUBSTRING(sotr.patronymic, 1, 1), '.') as 'Сотрудник'
+        FROM strah_polis as sp
+        JOIN avto as a ON sp.idAvto = a.id
+        JOIN marka as m ON a.idmarka = m.id
+        JOIN model as mo ON a.idmodel = mo.id
+        JOIN strahovatel as str ON sp.idstrahovatel = str.id
+        JOIN drivers as d ON sp.iddrivers = d.id
+        JOIN sobstvennic as sob ON a.idsobstvennic = sob.id
+        JOIN sotrudnik as sotr ON sp.idSotrudnik = sotr.id
+        WHERE YEAR(sp.Date_Vidach) = '$_POST[year]'";
+
+        echo '<div style="padding:12px">';
+
+        echo '<form method="post">';
+        echo '<label for="start_date" class="form-label select-label">Начальная дата:</label>';
+        echo '<input type="date" id="start_date" name="start_date">';
+
+        echo '<label for="end_date" class="form-label select-label">Конечная дата:</label>';
+        echo '<input type="date" id="end_date" name="end_date">';
+
+        echo '<input type="submit" name="show_table_period" value="Вывести">';
+        echo '</form>';
+        echo '</div>';
+
+        if (isset($_POST['show_table_period'])){
+        $sql = "SELECT sp.id as '#', sp.Series as 'Серия', sp.Number as 'Номер',
+        sp.Srok_Strah_Ot as 'Страхование от', sp.Srok_Strah_Do as 'Страхование до',
+        sp.Date_Zakluch as 'Дата заключения', sp.Date_Vidach as 'Дата выдачи' ,
+        sp.Strah_Premiya as 'Страх. премия' ,
+        CONCAT(str.surname, ' ', SUBSTRING(str.name, 1, 1), '. ', SUBSTRING(str.patronymic, 1, 1), '.') as 'Страхователь',
+        CONCAT(sob.surname, ' ', SUBSTRING(sob.name, 1, 1), '. ', SUBSTRING(sob.patronymic, 1, 1), '.') as 'Собственник',
+        CONCAT(d.surname, ' ', SUBSTRING(d.name, 1, 1), '. ', SUBSTRING(d.patronymic, 1, 1), '.') as 'Водитель',
+        CONCAT(m.nazvanie, ' ', mo.nazvanie) as 'Авто',
+        CONCAT(sotr.surname, ' ', SUBSTRING(sotr.name, 1, 1), '. ', SUBSTRING(sotr.patronymic, 1, 1), '.') as 'Сотрудник'
+        FROM strah_polis as sp
+        JOIN avto as a ON sp.idAvto = a.id
+        JOIN marka as m ON a.idmarka = m.id
+        JOIN model as mo ON a.idmodel = mo.id
+        JOIN strahovatel as str ON sp.idstrahovatel = str.id
+        JOIN drivers as d ON sp.iddrivers = d.id
+        JOIN sobstvennic as sob ON a.idsobstvennic = sob.id
+        JOIN sotrudnik as sotr ON sp.idSotrudnik = sotr.id
+        WHERE sp.Date_Vidach BETWEEN '$_POST[start_date]' AND '$_POST[end_date]' ";
+        }
+    }
     // Выполнение запроса
     $result = mysqli_query($db, $sql);
 
     // Проверка наличия результатов и вывод таблицы
     if (mysqli_num_rows($result) > 0) {
+        echo "$text";
         echo "<div class='container-fluid'>";
         echo "<div class='table-responsive'>";
         echo "<table class='full-width-table' border='1'>";
@@ -112,29 +242,8 @@ if (isset($_POST['show_table'])) {
         // echo "Нет данных.";
         echo "<h5 style = 'padding: 12px;';>Нет данных.</h5>";
     }
-
     // Закрытие соединения с базой данных
     mysqli_close($db);
 }
 ?>
-
 <script src="../../../mdb/js/mdb.min.js"></script>
-<script>
-    // Получаем ссылки на элементы <select>
-    var periodSelect = document.getElementById("periodSelect");
-    var yearSelect = document.getElementById("yearSelect");
-
-    // Добавляем обработчик события "change" для периода
-    periodSelect.addEventListener("change", function () {
-        var selectedPeriod = periodSelect.value;
-        // Ваш код действия для периода
-        alert("Выбран период: " + selectedPeriod);
-    });
-
-    // Добавляем обработчик события "change" для года
-    yearSelect.addEventListener("change", function () {
-        var selectedYear = yearSelect.value;
-        // Ваш код действия для года
-        alert("Выбран год: " + selectedYear);
-    });
-</script>
