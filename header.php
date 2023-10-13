@@ -72,6 +72,10 @@
                     </li>
                   </ul>
                 </li>
+                <li class="nav-item dropdown">
+                      <a class="nav-link dropdown d-flex align-items-center" href="/admin/zhurnal/strah_polis_zh.php" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                      Журнал операций</a>
+                </li>
               </ul>';
             } else {
               // Если 'login' не равен 'admin', не показывать элемент

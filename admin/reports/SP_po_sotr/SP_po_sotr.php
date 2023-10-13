@@ -111,5 +111,4 @@ if (isset($_POST['show_table'])) {
     mysqli_close($db);
 }
 ?>
-
 <script src="../../../mdb/js/mdb.min.js"></script>
