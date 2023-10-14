@@ -38,40 +38,16 @@
             <th>Статус</th>
             <th>VIN</th>
         </tr>
-        <?php $index = 0; // Инициализируем счетчик индексов для модальных окон ?>
         <? while ($data = mysqli_fetch_array($row_data)) { ?>
             <tr>
-                <form action="delete_user.php" method="post" id="deleteForm">
+                <form action="delete_user.php" method="post">
                     <td>
-                        <button type="button" class="btn btn-danger" data-mdb-toggle="modal" data-mdb-target="#confirmDeleteModal<?php echo $index; ?>">
-                            ✖ Delete
-                        </button>
-                        <input type="hidden" value="<?php echo $data['id']; ?>" name="user_id">
-                        <input type="hidden" name="delete">
+                        <input type="submit" value="✖" onclick="return confirm('Are you sure')">
+                        <input type="hidden" value=<? echo "$data[id]" ?> name="user_id">
+                        <input type="hidden" name='delete'>
                     </td>
                 </form>
-                <!-- Modal for Confirming Delete -->
-                <div class="modal fade" id="confirmDeleteModal<?php echo $index; ?>" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
-                                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                Are you sure you want to delete this user?
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn btn-danger" onclick="deleteUser()">Delete</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <?php $index++; // Увеличиваем индекс для следующего модального окна ?>
-
-
-                <form action="delete_user.php" method="post" id="deleteForm<?php echo $index; ?>">
+                <form action="update_user.php" method="post">
                     <td>
                         <input type="submit" value="✓">
                         <input type="hidden" value=<? echo $data['id'] ?> name="user_id">
@@ -99,7 +75,6 @@
                     <td><input type="text" name="VIN" value=<? echo $data['VIN'] ?>></td>
             </tr>
             </form>
-
         <? } ?>
         <form action="insert_user.php" method="post">
             <tr>
@@ -123,18 +98,4 @@
         </form>
     </table>
 </div>
-
-
 <script src="../../mdb/js/mdb.min.js"></script>
-<script>
-    function deleteUser(index) {
-        document.getElementById("deleteForm" + index).submit();
-    }
-
-    // Обработчик клика по кнопке "Delete"
-    document.querySelectorAll(".delete-button").forEach((button, index) => {
-        button.addEventListener("click", function () {
-            deleteUser(index);
-        });
-    });
-</script>
