@@ -39,20 +39,35 @@ require "../../../header.php";
         <select class="select" name="year" id="yearSelect">
             <?php
             for ($year = 2023; $year >= 1982; $year--) {
+                if ($_POST['year'] == $year) {
+                    echo "<option value='$year' selected>$year</option>";
+                }
                 echo "<option value='$year'>$year</option>";
             }
             ?>
         </select>
+        <?
+        $periods = [
+            '1' => '1 Квартал',
+            '2' => '2 Квартал',
+            '3' => '3 Квартал',
+            '4' => '4 Квартал',
+            'first_half_year' => '1 Полугодие',
+            'second_half_year' => '2 Полугодие',
+            '9_mnth' => '9 месяцев',
+            'year' => 'Год',
+        ];
+        ?>
         <label class="form-label select-label">Период</label>
         <select class="select" name="period" id="periodSelect">
-            <option value="1">1 Квартал</option>
-            <option value="2">2 Квартал</option>
-            <option value="3">3 Квартал</option>
-            <option value="4">4 Квартал</option>
-            <option value="first_half_year">1 Полугодие</option>
-            <option value="second_half_year">2 Полугодие</option>
-            <option value="9_mnth">9 месяцев</option>
-            <option value="year">Год</option>
+            <?
+            foreach ($periods as $period => $value) {
+                if (isset($_POST['period']) && $_POST['period'] == $period) {
+                    echo "<option value='$period' selected>$value</option>";
+                }
+                echo "<option value='$period'>$value</option>";
+            }
+            ?>
             <!-- <option value="main">Задать период</option> -->
         </select>
         <input type="submit" name="show_table" value="Вывести">
@@ -160,8 +175,8 @@ if (isset($_POST['show_table'])) {
         WHERE YEAR(sp.Date_Vidach) = '$_POST[year]'";
 
         $text = "<h5>Страховые полиса, оформленные за $_POST[year] год.</h5>";
-    } 
-    
+    }
+
     // Выполнение запроса
     $result = mysqli_query($db, $sql);
 
@@ -197,8 +212,7 @@ if (isset($_POST['show_table'])) {
     }
     // Закрытие соединения с базой данных
     mysqli_close($db);
-}
-else if (isset($_POST['show_table_period'])) {
+} else if (isset($_POST['show_table_period'])) {
     $sql = "SELECT sp.id as '#', sp.Series as 'Серия', sp.Number as 'Номер',
 sp.Srok_Strah_Ot as 'Страхование от', sp.Srok_Strah_Do as 'Страхование до',
 sp.Date_Zakluch as 'Дата заключения', sp.Date_Vidach as 'Дата выдачи' ,
@@ -218,7 +232,7 @@ JOIN sobstvennic as sob ON a.idsobstvennic = sob.id
 JOIN sotrudnik as sotr ON sp.idSotrudnik = sotr.id
 WHERE sp.Date_Vidach BETWEEN '$_POST[start_date]' AND '$_POST[end_date]' ";
 
-$text = "<h5>Страховые полиса, оформленные за период с $_POST[start_date] по $_POST[end_date].</h5>";
+    $text = "<h5>Страховые полиса, оформленные за период с $_POST[start_date] по $_POST[end_date].</h5>";
     // Выполнение запроса
     $result = mysqli_query($db, $sql);
 

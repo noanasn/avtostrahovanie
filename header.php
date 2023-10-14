@@ -73,7 +73,7 @@
                   </ul>
                 </li>
                 <li class="nav-item dropdown">
-                      <a class="nav-link dropdown d-flex align-items-center" href="/admin/zhurnal/strah_polis_zh.php" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                      <a class="nav-link dropdown d-flex align-items-center" href="/admin/zhurnal/strah_polis_zh.php" id="navbarDropdownMenuLink" role="button" aria-expanded="false">
                       Журнал операций</a>
                 </li>
               </ul>';

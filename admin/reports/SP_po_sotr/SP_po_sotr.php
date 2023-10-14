@@ -23,20 +23,23 @@ $sotr_data  = mysqli_query($db, "SELECT * FROM `sotrudnik`");
         border: 1px solid #ddd;
         white-space: nowrap;
     }
+
     .full-width-table {
-    width: 100%;
-    table-layout: auto;
-}
+        width: 100%;
+        table-layout: auto;
+    }
 </style>
 
 <div style="margin-top: 65px; padding:12px">
     <form method="post">
         <label class="form-label select-label">Сотрудник</label>
         <select class="select" name='idSotrudnik'>
-            <? while ($sotr = mysqli_fetch_array($sotr_data)) {
+            <?
+            while ($sotr = mysqli_fetch_array($sotr_data)) {
                 $fio = $sotr['Surname'] . " " . mb_substr($sotr['Name'], 0, 1) . "." . mb_substr($sotr['Patronymic'], 0, 1) . ".";
-                if ($strahpol['idSotrudnik'] === $sotr['id']) {
+                if (isset($_POST['idSotrudnik']) && $_POST['idSotrudnik'] == $sotr['id']) {
                     echo "<option value = $sotr[id] selected>$fio</option>";
+                    continue;
                 }
                 echo "<option value = $sotr[id]>$fio</option>";
             }
@@ -104,7 +107,6 @@ if (isset($_POST['show_table'])) {
     } else {
         // echo "Нет данных.";
         echo "<h5 style = 'padding: 12px;';>Нет данных.</h5>";
-
     }
 
     // Закрытие соединения с базой данных
