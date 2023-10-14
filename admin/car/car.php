@@ -50,7 +50,7 @@ $cars_of_data = mysqli_query($db, "SELECT * FROM `avto`");
         <form action="delete_car.php" method="post" id="delete_form">
             <tr>
                 <td>
-                    <input type="submit" value="✖">
+                    <input type="submit" value="✖" onclick="return confirm('Вы уверены что хотите удалить запись?')">
                     <input type="hidden" value=<? echo "$cars[id]" ?> name="car_id">
                     <input type="hidden" name='delete' id="delete_btn">
                 </td>

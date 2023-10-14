@@ -42,7 +42,7 @@
             <tr>
                 <form action="delete_user.php" method="post">
                     <td>
-                        <input type="submit" value="✖" onclick="return confirm('Are you sure')">
+                        <input type="submit" value="✖" onclick="return confirm('Вы уверены что хотите удалить запись?')">
                         <input type="hidden" value=<? echo "$data[id]" ?> name="user_id">
                         <input type="hidden" name='delete'>
                     </td>

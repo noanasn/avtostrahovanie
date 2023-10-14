@@ -54,7 +54,7 @@ $strahpol_of_data = mysqli_query($db, "SELECT * FROM `strah_polis`");
         <form action="delete_strah_polis.php" method="post" id="delete_form">
             <tr>
                 <td>
-                    <input type="submit" value="✖">
+                    <input type="submit" value="✖" onclick="return confirm('Вы уверены что хотите удалить запись?')">
                     <input type="hidden" value=<? echo "$strahpol[id]" ?> name="strah_polis_id">
                     <input type="hidden" name='delete' id="delete_btn">
                 </td>

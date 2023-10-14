@@ -37,7 +37,7 @@
             <tr>
                 <form action="delete_model.php" method="post">
                     <td>
-                        <input type="submit" value="✖">
+                        <input type="submit" value="✖" onclick="return confirm('Вы уверены что хотите удалить запись?')">
                         <input type="hidden" value=<? echo "$model_data[id]" ?> name="model_id">
                         <input type="hidden" name='delete'>
                     </td>
