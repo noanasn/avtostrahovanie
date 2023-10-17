@@ -9,7 +9,6 @@
 
   <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"> -->
 </head>
-`
 <body>
   <section class="intro">
     <div class="mask d-flex align-items-center h-100" style="background-color: #D6D6D6">

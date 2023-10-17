@@ -8,22 +8,9 @@
     <link rel="stylesheet" href="../mdb/css/style.css" />
     <link rel="stylesheet" href="../mdb/css/icons.css">
 
-    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"> -->
 </head>
 
 <body>
-    <!-- <div class="form_auth_block">
-        <div class="form_auth_block_content">
-            <p class="form_auth_block_head_text">Авторизация</p>
-            <form class="form_auth_style" action="session.php" method="post">
-                <label>Логин</label>
-                <input type="text" name="log" placeholder="Ivan_ivanov" required>
-                <label>Пароль</label>
-                <input type="password" name="pass" placeholder="Pa$$w0rd" required>
-                <button class="form_auth_button" type="submit" name="form_auth_submit">Войти</button>
-            </form>
-        </div>
-    </div> -->
     <form action="session.php" method="post">
         <section class="intro">
             <div class="mask d-flex align-items-center h-100" style="background-color: #D6D6D6">
