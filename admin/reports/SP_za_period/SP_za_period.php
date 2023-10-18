@@ -36,7 +36,7 @@ require "../../../header.php";
 <div style="margin-top: 65px; padding:12px">
     <form method="post">
         <label class="form-label select-label">Год</label>
-        <select class="select" name="year" id="yearSelect">
+        <select class="select" name="year">
             <?php
             for ($year = 2023; $year >= 1982; $year--) {
                 if ($_POST['year'] == $year) {
@@ -59,7 +59,7 @@ require "../../../header.php";
         ];
         ?>
         <label class="form-label select-label">Период</label>
-        <select class="select" name="period" id="periodSelect">
+        <select class="select" name="period">
             <?
             foreach ($periods as $period => $value) {
                 if (isset($_POST['period']) && $_POST['period'] == $period) {
@@ -69,7 +69,6 @@ require "../../../header.php";
                 echo "<option value='$period'>$value</option>";
             }
             ?>
-            <!-- <option value="main">Задать период</option> -->
         </select>
         <input type="submit" name="show_table" value="Вывести">
     </form>
@@ -235,7 +234,16 @@ if (isset($_POST['show_table'])) {
         echo "<h5 style = 'padding: 12px;';>Нет данных.</h5>";
     }
     // Закрытие соединения с базой данных
-    mysqli_close($db);
+    mysqli_close($db); ?>
+    <!-- Форма экспорта в excel -->
+    <div class="float-end" style="padding: 12px;">
+        <form action="export_to_excel.php" method="post">
+            <input type="hidden" name="year" value="<?= $_POST['year'] ?>">
+            <input type="hidden" name="period" value="<?= $_POST['period'] ?>">
+            <button type="submit" name="submit1" class="btn btn-dark btn-floating"><i class="fas fa-print fa-lg"></i>
+        </form>
+    </div>
+<?
 } else if (isset($_POST['show_table_period'])) {
     $sql = "SELECT sp.id as '#', sp.Series as 'Серия', sp.Number as 'Номер',
 sp.Srok_Strah_Ot as 'Страхование от', sp.Srok_Strah_Do as 'Страхование до',
@@ -291,7 +299,18 @@ WHERE sp.Date_Vidach BETWEEN '$_POST[start_date]' AND '$_POST[end_date]' ";
         echo "<h5 style = 'padding: 12px;';>Нет данных.</h5>";
     }
     // Закрытие соединения с базой данных
-    mysqli_close($db);
+    mysqli_close($db); ?>
+    <!-- Форма экспорта в excel -->
+    <div class="float-end" style="padding: 12px;">
+        <form action="export_to_excel.php" method="post">
+            <input type="hidden" name="start_date" value="<?= $_POST['start_date'] ?>">
+            <input type="hidden" name="end_date" value="<?= $_POST['end_date'] ?>">
+            <button type="submit" name="submit2" class="btn btn-dark btn-floating"><i class="fas fa-print fa-lg"></i>
+        </form>
+    </div>
+
+<?
 }
 ?>
+
 <script src="../../../mdb/js/mdb.min.js"></script>

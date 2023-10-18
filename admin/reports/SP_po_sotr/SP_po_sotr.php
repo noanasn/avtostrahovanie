@@ -111,6 +111,23 @@ if (isset($_POST['show_table'])) {
 
     // Закрытие соединения с базой данных
     mysqli_close($db);
-}
 ?>
+    <!-- Форма экспорта в excel -->
+    <div class="float-end" style="padding: 12px;">
+        <form action="export_to_excel.php" method="post">
+            <input type="hidden" name="idSotrudnik" value="<?= $_POST['idSotrudnik'] ?>">
+            <button type="submit" name="submit" class="btn btn-dark btn-floating"><i class="fas fa-print fa-lg"></i>
+        </form>
+    </div>
+<? }
+?>
+
 <script src="../../../mdb/js/mdb.min.js"></script>
+
+<!-- <script>
+    function ex() {
+        id = window.open("export_to_excel.php");
+        id.focus();
+        id.document.close();
+    }
+</script> -->
