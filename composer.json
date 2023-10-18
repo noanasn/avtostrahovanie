@@ -1,0 +1,17 @@
+{
+    "name": "anast/avtostrahovanie",
+    "autoload": {
+        "psr-4": {
+            "Anast\\Avtostrahovanie\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Anastasiia",
+            "email": "noanasn@gmail.com"
+        }
+    ],
+    "require": {
+        "phpoffice/phpword": "^1.1"
+    }
+}

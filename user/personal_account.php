@@ -121,18 +121,13 @@ require "../header.php";
                 <div>
                 <!-- 2 column grid layout with text inputs for the first and last names -->
                 <div class="row mb-4">
-                    <div class="col">
-                        <div class="form-outline">
-                            <input type="text" id="form6Example1" class="form-control" />
-                            <label class="form-label" for="form6Example1">VIN</label>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-outline">
-                            <input type="text" id="form6Example2" class="form-control" />
-                            <label class="form-label" for="form6Example2">Гос.номер</label>
-                        </div>
-                    </div>
+
+                <select class="form-select" aria-label="Default select example">
+  <option selected>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
                 </div>
 
                 <!-- Text input -->
@@ -260,4 +255,6 @@ require "../header.php";
                 }
                     ?>
 </body>
+
+
 <script src="../../mdb/js/mdb.min.js"></script>
