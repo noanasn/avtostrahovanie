@@ -90,7 +90,7 @@
         <!-- Right elements -->
         <div class="d-flex align-items-center">
           <!-- Icon -->
-          <a class="nav-link mx-3" href="/user/personal_account.php"><? if ($_SESSION['role']  == 'Администратор') {
+          <a class="nav-link mx-3" href="/user/personal_account_strah.php"><? if ($_SESSION['role']  == 'Администратор') {
                                                           echo 'Администратор';
                                                         } else {
                                                           echo $_SESSION['login'];
@@ -112,7 +112,7 @@
               </li>
               <? if (($_SESSION['role']  == 'Пользователь') or ($_SESSION['role']  == 'Страхователь')) {
                 echo '<li>
-                <a class="dropdown-item" href="/user/personal_account.php">Личный кабинет</a>
+                <a class="dropdown-item" href="/user/personal_account_strah.php">Личный кабинет</a>
               </li>';
               } else {
               } ?>

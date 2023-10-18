@@ -36,7 +36,7 @@
             <th>Логин</th>
             <th>Пароль</th>
             <th>Статус</th>
-            <th>VIN</th>
+            <!-- <th>VIN</th> -->
         </tr>
         <? while ($data = mysqli_fetch_array($row_data)) { ?>
             <tr>
@@ -72,7 +72,7 @@
                             }
                             ?>
                         </select></td>
-                    <td><input type="text" name="VIN" value=<? echo $data['VIN'] ?>></td>
+                    <!-- <td><input type="text" name="VIN" value=<? //echo $data['VIN'] ?>></td> -->
             </tr>
             </form>
         <? } ?>
@@ -93,7 +93,7 @@
                         <option value="Администратор">Администратор</option>
                         <option value="Оператор">Оператор</option>
                     </select></td>
-                <td><input type="text" name="insert_vin"></td>
+                <!-- <td><input type="text" name="insert_vin"></td> -->
             </tr>
         </form>
     </table>

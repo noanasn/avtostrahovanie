@@ -69,14 +69,14 @@
     </table>
     <?
     ?>
-    <input type="submit" name="submit" value="excel" onclick="ex()">
+    <!-- <input type="submit" name="submit" value="excel" onclick="ex()"> -->
 </div>
 
-<script>
+<!-- <script>
     function ex() {
         id = window.open("excel.php");
         id.focus();
         id.document.close();
     }
-</script>
+</script> -->
 <script src="../../mdb/js/mdb.min.js"></script>

@@ -172,12 +172,12 @@ $cars_of_data = mysqli_query($db, "SELECT * FROM `avto`");
         </tr>
     </form>
 </table>
-<input type="submit" name="submit" value="excel" onclick="ex()">
+<!-- <input type="submit" name="submit" value="excel" onclick="ex()"> -->
 <script src="../../mdb/js/mdb.min.js"></script>
-<script>
+<!-- <script>
     function ex() {
         id = window.open("excel.php");
         id.focus();
         id.document.close();
     }
-</script>
+</script> -->
