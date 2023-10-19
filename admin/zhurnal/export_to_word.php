@@ -28,7 +28,8 @@ concat(ma.Nazvanie, ' ',mo.Nazvanie) as 'Avto',
 a.Gos_Znak,
 concat(a.Doc_type, ' ',a.Doc_series,' ',a.Doc_number) as 'Document',
 concat(d.Surname, ' ',d.Name, ' ',d.Patronymic) as 'Driver',
-concat(d.Series_VU, ' ',d.Number_VU) as 'VU'
+concat(d.Series_VU, ' ',d.Number_VU) as 'VU',
+a.Pricep
 from strah_polis as sp join avto as a on sp.idAvto = a.id join marka as ma on a.idMarka = ma.id join model as mo on a.idModel = mo.id 
 join sotrudnik as sotr on sp.idSotrudnik = sotr.id
 join strahovatel as str on sp.idstrahovatel = str.id join drivers as d on sp.iddrivers = d.id join sobstvennic as sob on a.idsobstvennic = sob.id
@@ -55,6 +56,14 @@ $gos_znak = $data[12];
 $document = $data[13];
 $driver = $data[14];
 $vu = $data[15];
+$pricep = $data[16];
+
+if ($pricep == '0') {
+    $pricep ='Нет';
+}
+elseif ($pricep == '1') {
+    $pricep ='Да';
+}
 // header('Location: ' . $_SERVER['HTTP_REFERER']);
 // mysqli_free_result($row_data);
 
@@ -74,6 +83,7 @@ $templateProcessor->setValue('gos_znak', $gos_znak);
 $templateProcessor->setValue('document', $document);
 $templateProcessor->setValue('driver', $driver);
 $templateProcessor->setValue('vu', $vu);
+$templateProcessor->setValue('pricep', $pricep);
 
 
 $tempFile = tempnam(sys_get_temp_dir(), 'document');
