@@ -47,7 +47,8 @@ $strahpol_of_data = mysqli_query($db, "SELECT * FROM `strah_polis`");
 ?>
     <table class="full-width-table">
         <tr>
-            <th scope='col'>✖</th>
+            <th scope='col'></th>
+            <th scope='col'></th>
             <!-- <th scope='col'>✓</th> -->
             <th scope='col'>#</th>
             <th scope='col'>Серия</th>
@@ -71,13 +72,19 @@ $strahpol_of_data = mysqli_query($db, "SELECT * FROM `strah_polis`");
             $cars_data  = mysqli_query($db, "SELECT * FROM `avto`");
             $sotr_data  = mysqli_query($db, "SELECT * FROM `sotrudnik`");
             ?>
+            <form action="export_to_word.php" method="post">
+                <td>
+                    <button type="submit" name="export" class="btn btn-dark btn-floating"><i class="fas fa-print fa-lg"></i>
+                        <input type="hidden" name="strah_polis_id_for_export" value=<? echo "$strahpol[id]" ?>>
+                        <input type="hidden" name="export" id="export_btn">
+                </td>
+            </form>
             <form action="delete_strah_polis_zh.php" method="post" id="delete_form">
-                <tr>
-                    <td>
-                        <input type="submit" value="✖" onclick="return confirm('Вы уверены что хотите удалить запись?')">
-                        <input type="hidden" value=<? echo "$strahpol[id]" ?> name="strah_polis_id">
-                        <input type="hidden" name='delete' id="delete_btn">
-                    </td>
+                <td>
+                    <input type="submit" value="✖" onclick="return confirm('Вы уверены что хотите удалить запись?')">
+                    <input type="hidden" value=<? echo "$strahpol[id]" ?> name="strah_polis_id">
+                    <input type="hidden" name='delete' id="delete_btn">
+                </td>
             </form>
             <td><? echo $strahpol['id'] ?></td>
             <!-- Сделать SELECT на все возможные серии СП-->
@@ -124,7 +131,8 @@ $strahpol_of_data = mysqli_query($db, "SELECT * FROM `strah_polis`");
         <form action="insert_strah_polis_zh.php" method="post">
             <tr>
                 <td></td>
-                <td><input type="submit" value="+"></td>
+                <td></td>
+                <td><input type="submit" value="+" style="height:26.8 ; width:28.275 ;"></td>
                 <input type="hidden" name='insert'>
                 <th scope='col'><input name="series" type='text'></th>
                 <th scope='col'><input name="number" type='text'></th>
