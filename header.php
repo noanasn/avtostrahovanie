@@ -1,4 +1,4 @@
-  <header style="position: fixed; top: 0; left: 0; right: 0;">
+  <header style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; width: 100%;">
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <!-- Container wrapper -->

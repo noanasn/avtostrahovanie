@@ -102,7 +102,7 @@
                     <div class="col-12">
 
                       <div class="mx-auto" style="width: 250px;">
-                        <input class="btn btn-primary btn-lg btn-rounded gradient-custom text-body px-5" type="submit" value="Зарегистрироваться" />
+                        <input class="btn btn-primary btn-lg btn-rounded text-body px-5" type="submit" value="Зарегистрироваться" />
                       </div>
 
                     </div>

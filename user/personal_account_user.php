@@ -252,7 +252,7 @@ require "../header.php";
                 <div class="row d-flex justify-content-center">
                     <div class="col-md-4">
                         <div class="text-center" style="width: 250px;">
-                            <input class="btn btn-primary btn-lg btn-rounded gradient-custom text-body px-5" type="submit" value="Добавить" name="add_car" />
+                            <input class="btn btn-primary btn-lg btn-rounded text-body px-5" type="submit" value="Добавить" name="add_car" />
                         </div>
                     </div>
                 </div>
