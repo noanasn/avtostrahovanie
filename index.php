@@ -29,7 +29,9 @@
 <body>
     <?php include "header.php"; ?>
 
-    <div class="div-1"></div>
+    <div class="div-1">
+
+    </div>
     
     <!-- Акции -->
     <div class="container">
@@ -51,13 +53,13 @@
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item active" data-mdb-interval="3000">
-                                <img src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp" class="d-block w-100" alt="Wild Landscape" />
+                                <img src="/img/москвич 3е.jpg" class="d-block w-100" alt="Wild Landscape" style="height: 500px;"/>
                             </div>
                             <div class="carousel-item" data-mdb-interval="3000">
-                                <img src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp" class="d-block w-100" alt="Camera" />
+                                <img src="/img/москвич 3.jpg" class="d-block w-100" alt="Camera" style="height: 500px;"/>
                             </div>
                             <div class="carousel-item" data-mdb-interval="3000">
-                                <img src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp" class="d-block w-100" alt="Exotic Fruits" />
+                                <img src="/img/москвич 6.jpg" class="d-block w-100" alt="Exotic Fruits" style="height: 500px;"/>
                             </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleIndicators" data-mdb-slide="prev">
@@ -74,7 +76,9 @@
         </div>
     </div>
 
-    <div class="div-2"></div>
+    <div class="div-2">
+    <a href="/calc.php">Калькулятор</a>
+    </div>
     <!-- Новости -->
     <div class="container">
         <div class="row justify-content-start mb-4">
