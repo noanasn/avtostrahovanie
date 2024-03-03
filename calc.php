@@ -65,24 +65,49 @@
             <option value="10">10 месяцев и более</option>
           </select>
         </div>
+        <div class="col-md-6 mb-3">
+          <label for="city" class="form-label">Город регистрации собственника автомобиля</label>
+          <select class="form-select" name="city" id="city" required>
+            <option value="" disabled selected hidden>Выберите город</option>
+            <option value="1.48">Владимир</option>
+            <option value="1.24">Волгоград</option>
+            <option value="1.4">Воронеж</option>
+            <option value="1.64">Екатеринбург</option>
+            <option value="1.8">Казань</option>
+            <option value="1.08">Калининград</option>
+            <option value="1.64">Краснодар</option>
+            <option value="1.64">Красноярск</option>
+            <option value="1.8">Москва</option>
+            <option value="1.64">Нижний Новгород</option>
+            <option value="1.63">Новосибирск</option>
+            <option value="1.48">Омск</option>
+            <option value="1.8">Пермь</option>
+            <option value="1.64">Ростов-на-Дону</option>
+            <option value="1.48">Самара</option>
+            <option value="1.64">Санкт-Петербург</option>
+            <option value="1.48">Саратов</option>
+            <option value="1.64">Уфа</option>
+            <option value="1.88">Челябинск</option>
+            <option value="1.16">Якутск</option>
+          </select>
+        </div>
       </div>
       <button type="submit" class="btn btn-primary" name="calc" id="calc">Рассчитать</button>
     </form>
     <div id="result" class="mt-4"></div>
     <?php
     if (isset($_POST['calc'])) {
-      // Получаем значения из формы
       $carMarkId = $_POST['marka'];
       $carModelId = $_POST['model'];
       $carPower = $_POST['carPower'];
       $driverAge = $_POST['driverAge'];
       $driverExperience = $_POST['driverExperience'];
       $usagePeriod = $_POST['usagePeriod'];
+      $city = $_POST['city'];
 
-      // Функция для получения коэффициента из таблицы
-      function getCoefficient($age, $experience)
+      //Коэффицент возраст-стаж
+      function CalcAgeExpCoeff($age, $experience)
       {
-        // Таблица коэффициентов
         $coefficients = array(
           array(2.27, 1.92, 1.84, 1.65, 1.65, 1.62, 1.62, null, null, null, null, null, null, null, null, null),     // Возраст 16-21
           array(1.88, 1.72, 1.71, 1.13, 1.13, 1.10, 1.10, 1.09, 1.09, 1.09, null, null, null, null, null, null),     // Возраст 22-24
@@ -94,8 +119,6 @@
           array(1.43, 1.36, 1.35, 0.91, 0.91, 0.90, 0.90, 0.89, 0.89, 0.89, 0.88, 0.88, 0.88, 0.88, 0.88, 0.83)      // Возраст старше 59
         );
 
-
-        // Определение индекса в таблице коэффициентов в зависимости от возраста и стажа
         $ageIndex = null;
         $experienceIndex = null;
 
@@ -123,15 +146,11 @@
           $experienceIndex = 15; // Для стажа более 14 лет
         }
 
-        // Получение коэффициента из таблицы
         return $coefficients[$ageIndex][$experienceIndex];
       }
 
-      $ageCoefficient = getCoefficient($driverAge, $driverExperience);
-      echo "Коэффициент для возраста $driverAge лет и стажа $driverExperience лет: $ageCoefficient";
-      echo "<br>";
-
-      function calculatePowerCoefficient($power)
+      //Коэффицент мощности двигателя
+      function CalcPowerCoeff($power)
       {
         if ($power <= 50) {
           return 0.6;
@@ -148,11 +167,8 @@
         }
       }
 
-      $powerCoefficient = calculatePowerCoefficient($carPower);
-      echo "Коэффициент мощности для автомобиля мощностью $carPower л.с.: $powerCoefficient";
-      echo "<br>";
-
-      function calculateUsagePeriodCoefficient($months)
+      //Коэффицент сезонности
+      function CalcPeriodCoeff($months)
       {
         if ($months == 3) {
           return 0.5;
@@ -173,20 +189,26 @@
         }
       }
 
+      
 
-      $usagePeriodCoefficient = calculateUsagePeriodCoefficient($usagePeriod);
-      echo "Коэффициент периода использования для $usagePeriod месяцев: $usagePeriodCoefficient";
-      echo "<br>";
+      // echo "Коэффициент для возраста $driverAge лет и стажа $driverExperience лет: $ageCoefficient";
+      // echo "<br>";
+      // echo "Коэффициент мощности для автомобиля мощностью $carPower л.с.: $powerCoefficient";
+      // echo "<br>";
+      // echo "Коэффициент периода использования для $usagePeriod месяцев: $usagePeriodCoefficient";
+      // echo "<br>";
+      // echo "Территориальный коэффициент: $city";
+      // echo "<br>";
 
-      // Базовая ставка
-      $baseRate = 5436;
+      // echo "<h4>Сумма страховой премии составила: " . $strah_premiya . " рублей.</h4>";
 
-      // Расчет страховой премии
-      $insurancePremium = $baseRate * $ageCoefficient * $powerCoefficient;/*добавьте коэффициенты для марки и модели автомобиля*/
-
-      // Теперь вы можете вывести страховую премию на экран
-      echo "Страховая премия: " . $insurancePremium;
+      $text = "<h4>Сумма страховой премии составила: " . $strah_premiya . " рублей.</h4>";
+      // Вывод сообщения о страховой премии
+      echo "$text";
+      $text = "";
     }
+
+
     ?>
   </div>
   <script src="/mdb/js/mdb.min.js"></script>
