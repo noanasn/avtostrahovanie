@@ -19,6 +19,9 @@
             <li class="nav-item">
               <a class="nav-link" href="/index.php">Главная</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/news.php">Новости</a>
+            </li>
             <!-- эксперименты -->
             <!--  Проверить значение переменной 'login' в сессии -->
             <? if ($_SESSION['role']  == 'Администратор') {

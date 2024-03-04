@@ -37,7 +37,7 @@
                                             <label class="form-label" for="typePassword">Пароль</label>
                                         </div>
 
-                                        <button class="btn btn-primary btn-lg btn-rounded  text-body px-5" name="form_auth_submit" type="submit">Войти</button>
+                                        <button class="btn btn-outline-dark" name="form_auth_submit" type="submit">Войти</button>
 
                                     </div>
 
