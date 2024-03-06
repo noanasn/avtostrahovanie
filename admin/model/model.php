@@ -49,7 +49,7 @@
                         <input type="hidden" name='update'>
                     </td>
                     <td><? echo $model_data['id'] ?></td>
-                    <td><input type="text" name="Nazvanie" value=<? echo $model_data['Nazvanie'] ?>></td>
+                    <td><input type="text" name="Nazvanie" value="<?php echo $model_data['Nazvanie']; ?>"></td>
                     <td><select name='idSelect'><?
                                                 $marka_row_data  = mysqli_query($db, "SELECT * FROM `marka`");
                                                 while ($marka_data = mysqli_fetch_array($marka_row_data)) {

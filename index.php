@@ -12,33 +12,11 @@
     $marks_data  = mysqli_query($db, "SELECT * FROM `marka` order by Nazvanie ASC");
     ?>
 </head>
-<style>
-    .div-1 {
-        margin-top: 49px;
-        background-color: #53699e;
-        height: 100px;
-    }
-
-    .div-2 {
-        background-color: #acadd2;
-        height: 100px;
-    }
-
-    .div-3 {
-        background-color: #312c4d;
-        height: 100px;
-    }
-</style>
 
 <body>
     <?php include "header.php"; ?>
-
-    <div class="div-1">
-
-    </div>
-
     <!-- Акции -->
-    <div class="container">
+    <div class="container" style ="margin-top: 61px">
         <div class="row">
             <!-- Колонка с текстом -->
             <div class="col-md-4">
@@ -79,11 +57,8 @@
             </div>
         </div>
     </div>
-
-    <div class="div-2">
-    </div>
     <!-- Новости -->
-    <div class="container">
+    <div class="container border-top">
         <div class="row justify-content-start mb-4">
             <div class="col-md-12">
                 <h2>Новости</h2>
@@ -96,7 +71,7 @@
                     <div class="card-body">
                         <h5 class="card-title">29.02.2024</h5>
                         <p class="card-text">Что должно быть указано в бланке ОСАГО и как проверить, что он не поддельный.</p>
-                        <a href="https://www.banki.ru/news/daytheme/?id=11000043" class="btn btn-primary" data-mdb-ripple-init>Читать</a>
+                        <!-- <a href="https://www.banki.ru/news/daytheme/?id=11000043" class="btn btn-primary" data-mdb-ripple-init>Читать</a> -->
                     </div>
                 </div>
             </div>
@@ -106,7 +81,7 @@
                     <div class="card-body">
                         <h5 class="card-title">15.02.2024</h5>
                         <p class="card-text">Когда для ОСАГО нужен техосмотр и какие штрафы грозят за его отсутствие.</p>
-                        <a href="https://www.banki.ru/news/daytheme/?id=10999944" class="btn btn-primary" data-mdb-ripple-init>Читать</a>
+                        <!-- <a href="https://www.banki.ru/news/daytheme/?id=10999944" class="btn btn-primary" data-mdb-ripple-init>Читать</a> -->
                     </div>
                 </div>
             </div>
@@ -116,17 +91,23 @@
                     <div class="card-body">
                         <h5 class="card-title">07.02.2024</h5>
                         <p class="card-text">Как правильно и безопасно перевозить ребенка в автомобиле.</p>
-                        <a href="https://www.banki.ru/news/daytheme/?id=10999522" class="btn btn-primary" data-mdb-ripple-init>Читать</a>
+                        <!-- <a href="https://www.banki.ru/news/daytheme/?id=10999522" class="btn btn-primary" data-mdb-ripple-init>Читать</a> -->
                     </div>
                 </div>
             </div>
         </div>
+        <div class="text-end" style="margin-bottom: 20px;">
+        <a href="/news.php" class="btn btn-outline-dark">Читать новости</a>
+        </div>
     </div>
-
-    <div class="div-3"></div>
     <!-- Калькулятор -->
-    <div class="container">
-        <h2>Калькулятор страховки</h2>
+    <div class="container border-top">
+        <div class="row justify-content-start mb-4">
+            <div class="col-md-12">
+                <h2>Калькулятор страховки</h2>
+                <p>Наш сервис предоставляет возможность расчета примерной стоимости страхового полиса прямо здесь, онлайн.</p>
+            </div>
+        </div>
         <form id="insuranceForm" method="post">
             <div class="row">
                 <div class="col-md-6 mb-3">
@@ -202,132 +183,13 @@
                     </select>
                 </div>
             </div>
-            <button type="submit" class="btn btn-outline-primary" name="calc" id="calc">Рассчитать</button>
+            <div class="text-center">
+                <button type="submit" class="btn btn-outline-dark" name="calc" id="calc">Рассчитать</button>
+            </div>
         </form>
         <div id="result" class="mt-4"></div>
     </div>
-    <!-- Footer -->
-    <footer class="text-center text-lg-start bg-body-tertiary text-muted">
-        <!-- Section: Social media -->
-        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-            <!-- Left -->
-            <div class="me-5 d-none d-lg-block">
-                <span>Get connected with us on social networks:</span>
-            </div>
-            <!-- Left -->
-
-            <!-- Right -->
-            <div>
-                <a href="" class="me-4 text-reset">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="" class="me-4 text-reset">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="" class="me-4 text-reset">
-                    <i class="fab fa-google"></i>
-                </a>
-                <a href="" class="me-4 text-reset">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="" class="me-4 text-reset">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="" class="me-4 text-reset">
-                    <i class="fab fa-github"></i>
-                </a>
-            </div>
-            <!-- Right -->
-        </section>
-        <!-- Section: Social media -->
-
-        <!-- Section: Links  -->
-        <section class="">
-            <div class="container text-center text-md-start mt-5">
-                <!-- Grid row -->
-                <div class="row mt-3">
-                    <!-- Grid column -->
-                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                        <!-- Content -->
-                        <h6 class="text-uppercase fw-bold mb-4">
-                            <i class="fas fa-gem me-3"></i>Company name
-                        </h6>
-                        <p>
-                            Here you can use rows and columns to organize your footer content. Lorem ipsum
-                            dolor sit amet, consectetur adipisicing elit.
-                        </p>
-                    </div>
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                        <!-- Links -->
-                        <h6 class="text-uppercase fw-bold mb-4">
-                            Products
-                        </h6>
-                        <p>
-                            <a href="#!" class="text-reset">Angular</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset">React</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset">Vue</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset">Laravel</a>
-                        </p>
-                    </div>
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                        <!-- Links -->
-                        <h6 class="text-uppercase fw-bold mb-4">
-                            Useful links
-                        </h6>
-                        <p>
-                            <a href="#!" class="text-reset">Pricing</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset">Settings</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset">Orders</a>
-                        </p>
-                        <p>
-                            <a href="#!" class="text-reset">Help</a>
-                        </p>
-                    </div>
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-                        <!-- Links -->
-                        <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-                        <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
-                        <p>
-                            <i class="fas fa-envelope me-3"></i>
-                            info@example.com
-                        </p>
-                        <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
-                        <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
-                    </div>
-                    <!-- Grid column -->
-                </div>
-                <!-- Grid row -->
-            </div>
-        </section>
-        <!-- Section: Links  -->
-
-        <!-- Copyright -->
-        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-            © 2021 Copyright:
-            <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
-    <!-- Footer -->
+    <?php include "footer.php"; ?>
     <script src="mdb/js/mdb.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>

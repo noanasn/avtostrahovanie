@@ -48,7 +48,7 @@
                         <input type="hidden" name='update'>
                     </td>
                     <td><? echo $data['id'] ?></td>
-                    <td><input type="text" name="Nazvanie" value=<? echo $data['Nazvanie'] ?>></td>
+                    <td><input type="text" name="Nazvanie" value="<?php echo $data['Nazvanie']; ?>"></td>
             </tr>
                 </form>
         <? } ?>

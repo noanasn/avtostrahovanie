@@ -104,6 +104,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $insurancePremium = $baseRate * $ageCoefficient * $powerCoefficient * $usagePeriodCoefficient * $city;
     $strah_premiya = round($insurancePremium, 2);
 
-    echo "<h4>Сумма страховой премии составила: " . $strah_premiya . " рублей.</h4>";
+    echo "<div class='text-center'><h4>Сумма страховой премии составила ≈ " . $strah_premiya . " рублей.</h4></div>";
     // Вывод сообщения о страховой премии
 }
