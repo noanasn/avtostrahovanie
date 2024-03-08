@@ -27,7 +27,7 @@
             </li>
             <!-- эксперименты -->
             <!--  Проверить значение переменной 'login' в сессии -->
-            <? if ($_SESSION['role']  == 'Администратор') {
+            <? if ($_SESSION['status_user']  == 'Администратор') {
               // Если 'login' равен 'admin', показать элемент
               echo '
               <ul class="navbar-nav">
@@ -82,6 +82,10 @@
                       <a class="nav-link dropdown d-flex align-items-center" href="/admin/zhurnal/strah_polis_zh.php" id="navbarDropdownMenuLink" role="button" aria-expanded="false">
                       Журнал операций</a>
                 </li>
+                <li class="nav-item dropdown">
+                      <a class="nav-link dropdown d-flex align-items-center" href="/admin/requests/requests.php" id="navbarDropdownMenuLink" role="button" aria-expanded="false">
+                      Заявки</a>
+                </li>
               </ul>';
             } else {
               // Если 'login' не равен 'admin', не показывать элемент
@@ -96,10 +100,10 @@
         <!-- Right elements -->
         <div class="d-flex align-items-center">
           <!-- Icon -->
-          <a class="nav-link mx-3" href="/user/personal_account_strah.php"><? if ($_SESSION['role']  == 'Администратор') {
+          <a class="nav-link mx-3" href="/user/personal_account_strah.php"><? if ($_SESSION['status_user']  == 'Администратор') {
                                                           echo 'Администратор';
                                                         } else {
-                                                          echo $_SESSION['login'];
+                                                          echo $_SESSION['login_user'];
                                                         } ?></a>
           <!-- Avatar -->
           <div class="dropdown">
@@ -116,7 +120,7 @@
               <li>
                 <a class="dropdown-item" href="/auto/logout.php">Выход <i class="fas fa-sign-out-alt" style="color: rgb(71, 73, 74);"></i></a>
               </li>
-              <? if (($_SESSION['role']  == 'Пользователь') or ($_SESSION['role']  == 'Страхователь')) {
+              <? if (($_SESSION['status_user']  == 'Пользователь') or ($_SESSION['status_user']  == 'Страхователь')) {
                 echo '<li>
                 <a class="dropdown-item" href="/user/personal_account_strah.php">Личный кабинет</a>
               </li>';

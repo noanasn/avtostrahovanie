@@ -92,7 +92,7 @@ require "../header.php";
             join marka as m on a.idMarka = m.id 
             join model as mo on a.idModel = mo.id 
             join sobstvennic as s on a.idSobstvennic = s.id
-            WHERE s.Surname = '$_SESSION[surname]' and s.Name = '$_SESSION[name]' and s.Patronymic = '$_SESSION[patronymic]'";
+            WHERE s.Surname = '$_SESSION[surname_user]' and s.Name = '$_SESSION[name_user]' and s.Patronymic = '$_SESSION[patronymic_user]'";
 
                     $result = mysqli_query($db, $sql);
 
@@ -219,21 +219,21 @@ require "../header.php";
                     <label style="text-align: center; padding-bottom: 5px;">Собственник</label>
                     <div class="col">
                         <div class="form-outline mb-4">
-                            <input type="text" id="el9" class="form-control" readonly name="sobstv_surname" value="<?= $_SESSION['surname'] ?>" />
+                            <input type="text" id="el9" class="form-control" readonly name="sobstv_surname" value="<?= $_SESSION['surname_user'] ?>" />
                             <label class="form-label" for="el9">Фамилия</label>
                         </div>
                     </div>
 
                     <div class="col">
                         <div class="form-outline mb-4">
-                            <input type="text" id="el10" class="form-control" readonly name="sobstv_name" value="<?= $_SESSION['name'] ?>" />
+                            <input type="text" id="el10" class="form-control" readonly name="sobstv_name" value="<?= $_SESSION['name_user'] ?>" />
                             <label class="form-label" for="el10">Имя</label>
                         </div>
                     </div>
 
                     <div class="col">
                         <div class="form-outline mb-4">
-                            <input type="text" id="el11" class="form-control" readonly name="sobstv_patronymic" value="<?= $_SESSION['patronymic'] ?>" />
+                            <input type="text" id="el11" class="form-control" readonly name="sobstv_patronymic" value="<?= $_SESSION['patronymic_user'] ?>" />
                             <label class="form-label" for="el11">Отчество</label>
                         </div>
                     </div>
@@ -279,8 +279,8 @@ require "../header.php";
             JOIN drivers AS d ON sp.iddrivers = d.id 
             JOIN sobstvennic AS s ON a.idsobstvennic = s.id 
             JOIN sotrudnik AS sotr ON sp.idSotrudnik = sotr.id
-            WHERE (s.Surname = '$_SESSION[surname]' and s.Name = '$_SESSION[name]' and s.Patronymic = '$_SESSION[patronymic]') or 
-            (str.surname = '$_SESSION[surname]' and str.Name = '$_SESSION[name]' and str.Patronymic = '$_SESSION[patronymic]');";
+            WHERE (s.Surname = '$_SESSION[surname_user]' and s.Name = '$_SESSION[name_user]' and s.Patronymic = '$_SESSION[patronymic_user]') or 
+            (str.surname = '$_SESSION[surname_user]' and str.Name = '$_SESSION[name_user]' and str.Patronymic = '$_SESSION[patronymic_user]');";
 
                     $result = mysqli_query($db, $sql);
 

@@ -36,7 +36,7 @@ require "../header.php";
 </style>
 
 <body>
-    <? if ($_SESSION['role'] == 'Пользователь') {
+    <? if ($_SESSION['status_user'] == 'Пользователь') {
         echo '<script>document.location.href = "personal_account_user.php"</script>';
     } else {
     }
@@ -56,11 +56,11 @@ require "../header.php";
         </ul>
     </div>
     <?
-    // echo (var_dump($_SESSION));
+    echo (var_dump($_SESSION));
 
     if (isset($_POST['my_data'])) {
         //    echo "Данные";
-        $strahov_of_data = mysqli_query($db, "SELECT * FROM `strahovatel` WHERE id = ' $_SESSION[id_strahovatel]'"); ?>
+        $strahov_of_data = mysqli_query($db, "SELECT * FROM `strahovatel` WHERE id = ' $_SESSION[id_user]'"); ?>
         <table class="table">
             <thead class="table-secondary">
                 <tr>
@@ -97,7 +97,7 @@ require "../header.php";
             JOIN sobstvennic as s ON a.idSobstvennic = s.id
             JOIN strah_polis as sp ON sp.idAvto = a.id
             JOIN strahovatel as str ON sp.idStrahovatel = str.id
-            WHERE sp.idStrahovatel = '$_SESSION[id_strahovatel]'";
+            WHERE sp.idStrahovatel = '$_SESSION[id_user]'";
 
                     $result = mysqli_query($db, $sql);
 
@@ -156,7 +156,7 @@ require "../header.php";
             JOIN drivers AS d ON sp.iddrivers = d.id 
             JOIN sobstvennic AS sob ON a.idsobstvennic = sob.id 
             JOIN sotrudnik AS sotr ON sp.idSotrudnik = sotr.id
-            WHERE str.surname = '$_SESSION[surname]'";
+            WHERE str.surname = '$_SESSION[surname_user]'";
 
                     $result = mysqli_query($db, $sql);
 

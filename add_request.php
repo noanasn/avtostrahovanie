@@ -1,20 +1,17 @@
 <?php
 include $_SERVER["DOCUMENT_ROOT"] . "/connect.php";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $carMarkId = $_POST['marka'];
-    $carModelId = $_POST['model'];
-    $carPower = $_POST['carPower'];
-    $driverAge = $_POST['driverAge'];
-    $driverExperience = $_POST['driverExperience'];
-    $usagePeriod = $_POST['usagePeriod'];
+if (isset($_POST['request'])) {
+    $carMarka = $_POST['marka'];
+    $carPower = $_POST['power'];
+    $Age = $_POST['driverAge'];
+    $Period = $_POST['usagePeriod'];
     $city = $_POST['city'];
-    $date_vu = $_POST['date_vu'];
+    $date_vidach_vu = $_POST['date_vu'];
 
-    $datetime_vu = strtotime($date_vu);
+    $datetime_vu = strtotime($date_vidach_vu);
     $year = date('Y', $datetime_vu);
-
-    $ExperienceFromVU = 2024 - $year;
+    $driverExperience = 2024 - $year;
 
     //Коэффицент возраст-стаж
     function CalcAgeExpCoeff($age, $experience)
@@ -101,15 +98,59 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
 
-    $ageCoefficient = CalcAgeExpCoeff($driverAge, $driverExperience);
+    $ageCoefficient = CalcAgeExpCoeff($Age, $driverExperience);
     $powerCoefficient = CalcPowerCoeff($carPower);
-    $usagePeriodCoefficient = CalcPeriodCoeff($usagePeriod);
+    $usagePeriodCoefficient = CalcPeriodCoeff($Period);
     $baseRate = 7535; // Базовая ставка
 
     // Расчет страховой премии
     $insurancePremium = $baseRate * $ageCoefficient * $powerCoefficient * $usagePeriodCoefficient * $city;
     $strah_premiya = round($insurancePremium, 2);
 
-    echo "<div class='text-center'><h4>Сумма страховой премии составила ≈ " . $strah_premiya . " рублей.</h4></div>";
-    // Вывод сообщения о страховой премии
+
+    // Обрабатываем данные из формы
+    $marka = $_POST['marka'];
+    $model = $_POST['model'];
+    $power = $_POST['power'];
+    $VIN = $_POST['VIN'];
+    $gos_znak = $_POST['gos_znak'];
+    $doc_type = $_POST['doc_type'];
+    $doc_series = $_POST['doc_series'];
+    $doc_number = $_POST['doc_number'];
+    $sobstv_surname = $_POST['sobstv_surname'];
+    $sobstv_name = $_POST['sobstv_name'];
+    $sobstv_patronymic = $_POST['sobstv_patronymic'];
+    $strah_surname = $_POST['strah_surname'];
+    $strah_name = $_POST['strah_name'];
+    $strah_patronymic = $_POST['strah_patronymic'];
+    $driver_surname = $_POST['driver_surname'];
+    $driver_name = $_POST['driver_name'];
+    $driver_patronymic = $_POST['driver_patronymic'];
+    $series_vu = $_POST['series_vu'];
+    $number_vu = $_POST['number_vu'];
+    $date_vu = $_POST['date_vu'];
+    $driverAge = $_POST['driverAge'];
+    $usagePeriod = $_POST['usagePeriod'];
+    $pricep = isset($_POST['pricep']) ? 1 : 0; // Проверяем, был ли выбран чекбокс
+
+    // Выполняем запрос на вставку данных в базу данных
+    $query = "INSERT INTO `request` 
+    (`marka`, `model`, `power`, `VIN`, `gos_znak`, `doc_type`, `doc_series`, `doc_number`, 
+    `sobstv_surname`, `sobstv_name`, `sobstv_patronymic`, `strah_surname`, `strah_name`, `strah_patronymic`, 
+    `driver_surname`, `driver_name`, `driver_patronymic`, `driver_series_vu`, `driver_number_vu`, `driver_date_vidach_vu`, 
+    `pricep`,`strah_premiya`, `srok_strah`, `status`) 
+    VALUES 
+    ('$marka', '$model', '$power', '$VIN', '$gos_znak', '$doc_type', '$doc_series', '$doc_number', 
+    '$sobstv_surname', '$sobstv_name', '$sobstv_patronymic', '$strah_surname', '$strah_name', '$strah_patronymic', 
+    '$driver_surname', '$driver_name', '$driver_patronymic', '$series_vu', '$number_vu', '$date_vu', '$pricep','$strah_premiya','$usagePeriod', 'Не рассмотрена')";
+
+    // Попробуем выполнить запрос
+    if (mysqli_query($db, $query)) {
+        echo '<script>alert("Ваша заявка успешно отправлена");';
+        echo 'window.location.href = "' . $_SERVER['HTTP_REFERER'] . '";</script>';
+    } else {
+        echo "Ошибка: " . mysqli_error($db);
+    }
+    // Закрываем соединение с базой данных
+    mysqli_close($db);
 }
