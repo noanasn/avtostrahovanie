@@ -67,7 +67,7 @@
         <div class="row justify-content-start">
             <div class="col-md-4 mb-3 mt-3">
                 <div class="card">
-                    <img src="/img/news1.jpg" class="card-img-top" alt="Fissure in Sandstone" />
+                    <img src="/news/img_for_news/news1.jpg" class="card-img-top" alt="Fissure in Sandstone" />
                     <div class="card-body">
                         <h5 class="card-title">29.02.2024</h5>
                         <p class="card-text">Что должно быть указано в бланке ОСАГО и как проверить, что он не поддельный.</p>
@@ -77,7 +77,7 @@
             </div>
             <div class="col-md-4 mb-3 mt-3">
                 <div class="card">
-                    <img src="/img/news2.jpg" class="card-img-top" alt="Fissure in Sandstone" />
+                    <img src="/news/img_for_news/news2.jpg" class="card-img-top" alt="Fissure in Sandstone" />
                     <div class="card-body">
                         <h5 class="card-title">15.02.2024</h5>
                         <p class="card-text">Когда для ОСАГО нужен техосмотр и какие штрафы грозят за его отсутствие.</p>
@@ -87,7 +87,7 @@
             </div>
             <div class="col-md-4 mb-3 mt-3">
                 <div class="card">
-                    <img src="/img/news3.jpg" class="card-img-top" alt="Fissure in Sandstone" />
+                    <img src="/news/img_for_news/news3.jpg" class="card-img-top" alt="Fissure in Sandstone" />
                     <div class="card-body">
                         <h5 class="card-title">07.02.2024</h5>
                         <p class="card-text">Как правильно и безопасно перевозить ребенка в автомобиле.</p>
@@ -97,7 +97,7 @@
             </div>
         </div>
         <div class="text-end" style="margin-bottom: 20px;">
-        <a href="/news.php" class="btn btn-outline-dark">Читать новости</a>
+        <a href="/news/news.php" class="btn btn-outline-dark">Читать новости</a>
         </div>
     </div>
     <!-- Калькулятор -->

@@ -1,0 +1,59 @@
+.news-text {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.news-text h2 {
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+
+.news-text p {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.news-text ul li {
+    color: #666;
+}
+
+.news-text img {
+    height: auto;
+    margin: 0 auto 20px;
+    display: block;
+}
+
+.flex-container {
+    display: flex;
+    align-items: center;
+}
+
+.custom-icon {
+    color: gray;
+    margin-right: 10px;
+}
+
+table {
+    margin: 0 auto; /* Размещаем таблицу по центру */
+    border-collapse: collapse; /* Объединяем границы ячеек */
+    width: 80%; /* Ширина таблицы */
+}
+
+/* Стили для заголовков таблицы */
+table th {
+    border: 1px solid #ddd; /* Границы для заголовков */
+    padding: 8px; /* Отступы в ячейках */
+    text-align: center; /* Выравнивание текста по левому краю */
+}
+
+/* Стили для ячеек таблицы */
+table td {
+    border: 1px solid #ddd; /* Границы для ячеек */
+    padding: 8px; /* Отступы в ячейках */
+    text-align: center; /* Выравнивание текста по левому краю */
+}

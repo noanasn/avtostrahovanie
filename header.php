@@ -20,7 +20,7 @@
               <a class="nav-link" href="/index.php">Главная</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/news.php">Новости</a>
+              <a class="nav-link" href="/news/news.php">Новости</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/osago.php">ОСАГО</a>

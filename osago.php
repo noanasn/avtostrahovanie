@@ -20,6 +20,13 @@
       <div class="col-md-12">
         <h2>Оформление заявки на получение полиса ОСАГО</h2>
         <p>Здесь вы можете быстро и удобно подать заявку на оформление полиса ОСАГО, которая будет рассмотрена нашим специалистом.</p>
+        <p>Для этого Вам необходимо:</p>
+        <ul>
+          <li>Авторизоваться на сайте</li>
+          <li>Заполнить все поля формы</li>
+          <li>Нажать на кнопку "Отправить заявку"</li>
+        </ul>
+        <p>После этого, Ваша заявка будет рассмотрена нашим специалистом в течение трёх рабочих дней. При одобрении заявки, вы сможете увидеть данные о страховом полисе и дальнейшие инструкции в Вашем личном кабинете</p>
       </div>
     </div>
     <form id="insuranceForm" action="/add_request.php" method="post">
@@ -28,7 +35,7 @@
         <div class="row">
           <!-- Марка -->
           <div class="col">
-            <select class="form-select" name="marka" id="marka" required123>
+            <select class="form-select" name="marka" id="marka" required>
               <option value="" disabled selected hidden>Марка</option>
               <?php while ($marks = mysqli_fetch_array($marks_data)) {
                 if ($cars['idMarka'] === $marks['id']) {
@@ -41,14 +48,14 @@
           </div>
           <!-- Модель -->
           <div class="col">
-            <select class="form-select" name="model" id="model" required123>
+            <select class="form-select" name="model" id="model" required>
               <option value="" disabled selected hidden>Модель</option>
             </select>
           </div>
           <!-- Мощность -->
           <div class="col">
             <div class="form-outline col-md-6 mb-4">
-              <input type="number" id="power" class="form-control" name="power" required123 />
+              <input type="number" id="power" class="form-control" name="power" required />
               <label class="form-label" for="power">Мощность двигателя</label>
             </div>
           </div>
@@ -57,14 +64,14 @@
           <!-- VIN -->
           <div class="col">
             <div class="form-outline col-md-6 mb-4">
-              <input type="text" class="form-control" name="VIN" id="VIN" maxlength="17" required123 />
+              <input type="text" class="form-control" name="VIN" id="VIN" maxlength="17" required />
               <label for="VIN" class="form-label">VIN</label>
             </div>
           </div>
           <!-- ГосНомер -->
           <div class="col">
             <div class="form-outline col-md-6 mb-4">
-              <input type="text" class="form-control" name="gos_znak" id="gos_znak" maxlength="9" required123 />
+              <input type="text" class="form-control" name="gos_znak" id="gos_znak" maxlength="9" required />
               <label for="gos_znak" class="form-label">Государственный номер</label>
             </div>
           </div>
@@ -72,7 +79,7 @@
         <div class="row">
           <!-- Тип документа -->
           <div class="col">
-            <select class="form-select" name="doc_type" id="doc_type" required123>
+            <select class="form-select" name="doc_type" id="doc_type" required>
               <option value="" disabled selected hidden>Тип документа</option>
               <option value="СТС">СТС</option>
               <option value="ПТС">ПТС</option>
@@ -81,14 +88,14 @@
           <!-- Серия документа -->
           <div class="col">
             <div class="form-outline col-md-6 mb-4">
-              <input type="text" class="form-control" name="doc_series" id="doc_series" maxlength="4" required123 />
+              <input type="text" class="form-control" name="doc_series" id="doc_series" maxlength="4" required />
               <label for="doc_series" class="form-label">Серия документа</label>
             </div>
           </div>
           <!-- Номер документа -->
           <div class="col">
             <div class="form-outline col-md-6 mb-4">
-              <input type="number" class="form-control" name="doc_number" id="doc_number" required123 />
+              <input type="number" class="form-control" name="doc_number" id="doc_number" required />
               <label for="doc_number" class="form-label">Номер документа</label>
             </div>
           </div>
@@ -101,28 +108,28 @@
         <div class="row">
           <div class="col">
             <div class="form-outline mb-4">
-              <input type="text" id="sobstv_surname" class="form-control" name="sobstv_surname" maxlength="30" required123 />
+              <input type="text" id="sobstv_surname" class="form-control" name="sobstv_surname" maxlength="30" required />
               <label class="form-label" for="sobstv_surname">Фамилия</label>
             </div>
           </div>
 
           <div class="col">
             <div class="form-outline mb-4">
-              <input type="text" id="sobstv_name" class="form-control" name="sobstv_name" maxlength="30" required123 />
+              <input type="text" id="sobstv_name" class="form-control" name="sobstv_name" maxlength="30" required />
               <label class="form-label" for="sobstv_name">Имя</label>
             </div>
           </div>
 
           <div class="col">
             <div class="form-outline mb-4">
-              <input type="text" id="sobstv_patronymic" class="form-control" name="sobstv_patronymic" maxlength="30" required123 />
+              <input type="text" id="sobstv_patronymic" class="form-control" name="sobstv_patronymic" maxlength="30" required />
               <label class="form-label" for="sobstv_patronymic">Отчество</label>
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-md-6 mb-3">
-            <select class="form-select" name="city" id="city" required123>
+            <select class="form-select" name="city" id="city" required>
               <option value="" disabled selected hidden>Город регистрации собственника автомобиля</option>
               <option value="1.48">Владимир</option>
               <option value="1.24">Волгоград</option>
@@ -155,21 +162,21 @@
         <div class="row">
           <div class="col">
             <div class="form-outline mb-4">
-              <input type="text" id="strah_surname" class="form-control" name="strah_surname" maxlength="30" required123 />
+              <input type="text" id="strah_surname" class="form-control" name="strah_surname" maxlength="30" required />
               <label class="form-label" for="strah_surname">Фамилия</label>
             </div>
           </div>
 
           <div class="col">
             <div class="form-outline mb-4">
-              <input type="text" id="strah_name" class="form-control" name="strah_name" maxlength="30" required123 />
+              <input type="text" id="strah_name" class="form-control" name="strah_name" maxlength="30" required />
               <label class="form-label" for="strah_name">Имя</label>
             </div>
           </div>
 
           <div class="col">
             <div class="form-outline mb-4">
-              <input type="text" id="strah_patronymic" class="form-control" name="strah_patronymic" maxlength="30" required123 />
+              <input type="text" id="strah_patronymic" class="form-control" name="strah_patronymic" maxlength="30" required />
               <label class="form-label" for="strah_patronymic">Отчество</label>
             </div>
           </div>
@@ -182,21 +189,21 @@
         <div class="row">
           <div class="col">
             <div class="form-outline mb-4">
-              <input type="text" id="driver_surname" class="form-control" name="driver_surname" maxlength="30" required123 />
+              <input type="text" id="driver_surname" class="form-control" name="driver_surname" maxlength="30" required />
               <label class="form-label" for="driver_surname">Фамилия</label>
             </div>
           </div>
 
           <div class="col">
             <div class="form-outline mb-4">
-              <input type="text" id="driver_name" class="form-control" name="driver_name" maxlength="30" required123 />
+              <input type="text" id="driver_name" class="form-control" name="driver_name" maxlength="30" required />
               <label class="form-label" for="driver_name">Имя</label>
             </div>
           </div>
 
           <div class="col">
             <div class="form-outline mb-4">
-              <input type="text" id="driver_patronymic" class="form-control" name="driver_patronymic" maxlength="30" required123 />
+              <input type="text" id="driver_patronymic" class="form-control" name="driver_patronymic" maxlength="30" required />
               <label class="form-label" for="driver_patronymic">Отчество</label>
             </div>
           </div>
@@ -204,21 +211,21 @@
         <div class="row">
           <div class="col">
             <div class="form-outline mb-4">
-              <input type="number" id="series_vu" class="form-control" name="series_vu" required123 />
+              <input type="number" id="series_vu" class="form-control" name="series_vu" required />
               <label class="form-label" for="series_vu">Серия ВУ</label>
             </div>
           </div>
 
           <div class="col">
             <div class="form-outline mb-4">
-              <input type="number" id="number_vu" class="form-control" name="number_vu" required123 />
+              <input type="number" id="number_vu" class="form-control" name="number_vu" required />
               <label class="form-label" for="number_vu">Номер ВУ</label>
             </div>
           </div>
 
           <div class="col">
             <div class="form-outline mb-4">
-              <input type="date" id="date_vu" class="form-control" name="date_vu" required123 />
+              <input type="date" id="date_vu" class="form-control" name="date_vu" required />
               <label class="form-label" for="date_vu">Дата выдачи ВУ</label>
             </div>
           </div>
@@ -226,7 +233,7 @@
 
         <div class="col">
           <div class="form-outline md-6 mb-3">
-            <input type="number" class="form-control" name="driverAge" id="driverAge" min="16" max="100" required123>
+            <input type="number" class="form-control" name="driverAge" id="driverAge" min="16" max="100" required>
             <label for="driverAge" class="form-label">Возраст водителя (лет)</label>
           </div>
         </div>
@@ -234,7 +241,7 @@
       <div class="border border-3 rounded-5" style="padding: 20px; margin-top: 20px; margin-bottom: 20px;">
         <div class="row align-items-center">
           <div class="col">
-            <select class="form-select" name="usagePeriod" id="usagePeriod" required123>
+            <select class="form-select" name="usagePeriod" id="usagePeriod" required>
               <option value="" disabled selected hidden>Выберите срок страхования</option>
               <option value="3">3 месяца</option>
               <option value="4">4 месяца</option>
@@ -265,8 +272,8 @@
     <div id="result" class="mt-4"></div>
   </div>
   <?php include "footer.php"; ?>
-  <script src="/mdb/js/mdb.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="/mdb/js/mdb.min.js"></script>
   <script>
     $("#marka").change(function() {
       var selectedMarkaId = $(this).val();

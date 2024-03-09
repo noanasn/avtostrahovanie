@@ -1,7 +1,7 @@
 <?
 include $_SERVER["DOCUMENT_ROOT"] . "/connect.php";
 if (isset($_POST['deny'])) {
-    $query = "UPDATE `request` SET `status` = 'Отказана' WHERE id = $_POST[request_id] ";
+    $query = "UPDATE `request` SET `status` = 'Отказана', `comment` = '$_POST[comment]' WHERE id = $_POST[request_id] ";
     if (mysqli_query($db, $query)) {
         echo '<script>alert("Заявка отклонена");';
         echo 'window.location.href = "' . $_SERVER['HTTP_REFERER'] . '";</script>';
