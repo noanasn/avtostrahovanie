@@ -115,7 +115,7 @@
                 <a class="dropdown-item" href="/auto/auto.php">Вход <i class="fas fa-sign-in-alt" style="color: rgb(71, 73, 74);"></i></a>
               </li>
               <li>
-                <a class="dropdown-item" href="/auto/reg2.php">Регистрация</a>
+                <a class="dropdown-item" href="/auto/registration.php">Регистрация</a>
               </li>
               <li>
                 <a class="dropdown-item" href="/auto/logout.php">Выход <i class="fas fa-sign-out-alt" style="color: rgb(71, 73, 74);"></i></a>

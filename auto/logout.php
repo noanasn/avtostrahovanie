@@ -1,6 +1,5 @@
 <?php
 
-// Инициализируем сессию 
 session_start();
 
 $session_data = json_encode($_SESSION);

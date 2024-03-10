@@ -24,9 +24,6 @@
                                     <div class="my-md-5 pb-5">
 
                                         <h1 class="fw-bold mb-0">Добро пожаловать</h1><br>
-
-                                        <!-- <i class="fas fa-user-astronaut fa-3x my-5"></i> -->
-
                                         <div class="form-outline mb-4">
                                             <input type="text" name="log" id="typeLog" class="form-control form-control-lg" required />
                                             <label class="form-label" for="typeLog">Логин</label>
