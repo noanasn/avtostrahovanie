@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="../../mdb/css/mdb.min.css" />
 <link rel="stylesheet" href="../../mdb/css/icons.css">
+<title>Страховые полиса-Таблица</title>
 <?
 include $_SERVER["DOCUMENT_ROOT"] . "/connect.php";
 session_start();
@@ -25,7 +26,9 @@ $strahpol_of_data = mysqli_query($db, "SELECT * FROM `strah_polis`");
     }
 </style>
 
-<table style="margin-top:61.6px ;">
+<h3 style="margin-top:61.6px; margin-left: 10px;">Таблица - Страховые полиса</h3>
+<!-- <table style="margin-top:61.6px ;"> -->
+<table style="margin-top:10px ;">
     <tr>
         <th scope='col'>✖</th>
         <th scope='col'>✓</th>
@@ -68,7 +71,7 @@ $strahpol_of_data = mysqli_query($db, "SELECT * FROM `strah_polis`");
             <td><? echo $strahpol['id'] ?></td>
             <!-- Сделать SELECT на все возможные серии СП-->
             <td><input name="series" type='text' value=<? echo $strahpol['Series'] ?>></td>
-            <td><input name="number" type='text' value=<? echo $strahpol['Number'] ?>></td>
+            <td><input style="width: 100px;" name="number" type='text' value=<? echo $strahpol['Number'] ?>></td>
             <td><input name="srok_strah_ot" type='date' value=<? echo $strahpol['Srok_Strah_Ot'] ?>></td>
             <td><input name="srok_strah_do" type='date' value=<? echo $strahpol['Srok_Strah_Do'] ?>></td>
             <td><input name="date_zakluch" type='date' value=<? echo $strahpol['Date_Zakluch'] ?>></td>
@@ -117,6 +120,22 @@ $strahpol_of_data = mysqli_query($db, "SELECT * FROM `strah_polis`");
         </form>
     <? } ?>
     <form action="insert_strah_polis.php" method="post">
+    <tr>
+        <th scope='col'></th>
+        <th scope='col'></th>
+        <th scope='col'></th>
+        <th scope='col'>Серия</th>
+        <th scope='col'>Номер</th>
+        <th scope='col'>Страхование от</th>
+        <th scope='col'>Страхование до</th>
+        <th scope='col'>Дата заключения</th>
+        <th scope='col'>Дата выдачи</th>
+        <th scope='col'>Страх.премия</th>
+        <th scope='col'>Страхователь</th>
+        <th scope='col'>Водитель</th>
+        <th scope='col'>Авто</th>
+        <th scope='col'>Сотрудник</th>
+    </tr>
         <tr>
             <td></td>
             <td><input type="submit" value="+"></td>

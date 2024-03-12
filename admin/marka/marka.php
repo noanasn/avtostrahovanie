@@ -1,8 +1,9 @@
 <link rel="stylesheet" href="../../mdb/css/mdb.min.css" />
 <link rel="stylesheet" href="../../mdb/css/icons.css">
+<title>Марки-Таблица</title>
 <div>
     <?
-    include $_SERVER["DOCUMENT_ROOT"]."/connect.php";
+    include $_SERVER["DOCUMENT_ROOT"] . "/connect.php";
     session_start();
     require "../../header.php";
     $row_data = mysqli_query($db, "SELECT * FROM `marka`");
@@ -25,7 +26,9 @@
         }
     </style>
 
-    <table style="margin-top:61.6px ;">
+<h3 style="margin-top:61.6px; margin-left: 10px;">Таблица - Марки</h3>
+<!-- <table style="margin-top:61.6px ;"> -->
+<table style="margin-top:10px ;">
         <tr>
             <th>✖</th>
             <th>✓</th>
@@ -50,17 +53,23 @@
                     <td><? echo $data['id'] ?></td>
                     <td><input type="text" name="Nazvanie" value="<?php echo $data['Nazvanie']; ?>"></td>
             </tr>
-                </form>
+            </form>
         <? } ?>
-                <form action="insert_marka.php" method="post">
-                    <tr>
-                        <td></td>
-                        <td><input type="submit" value="+"></td>
-                        <input type="hidden" name='insert'>
-                        <td></td>
-                        <td><input type="text" name="insert_marka"></td>
-                    </tr>
-                </form>
+        <form action="insert_marka.php" method="post">
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>Марка</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="+"></td>
+                <input type="hidden" name='insert'>
+                <td></td>
+                <td><input type="text" name="insert_marka"></td>
+            </tr>
+        </form>
     </table>
 </div>
 <script src="../../mdb/js/mdb.min.js"></script>

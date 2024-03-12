@@ -110,53 +110,6 @@
         }
         ?>
 
-        <h4 style="margin-top: 30px;">Одобрены</h4>
-        <?php
-        $row_data = mysqli_query($db, "SELECT * FROM `request` WHERE `status`='Одобрена'");
-        if (mysqli_num_rows($row_data) > 0) {
-        ?>
-            <table style="margin-top: 10px;">
-                <tr>
-                    <th>ID</th>
-                    <th>Авто</th>
-                    <th>Мощность</th>
-                    <th>VIN</th>
-                    <th>Документ на авто</th>
-                    <th>Собственник</th>
-                    <th>Страхователь</th>
-                    <th>Водитель</th>
-                    <th>Данные о ВУ</th>
-                    <th>Гос. номер</th>
-                    <th>Прицеп</th>
-                    <th>Cрок страхования (мес.)</th>
-                    <th>Страховая премия</th>
-                </tr>
-                <?php
-                while ($data = mysqli_fetch_array($row_data)) { ?>
-                    <tr>
-                        <td><?php echo $data['id']; ?></td>
-                        <td><?php echo isset($marks_array[$data['marka']]) ? $marks_array[$data['marka']] . ' ' . (isset($models_array[$data['model']]) ? $models_array[$data['model']] : '') : ''; ?></td>
-                        <td><?php echo $data['power']; ?></td>
-                        <td><?php echo $data['VIN']; ?></td>
-                        <td><?php echo $data['doc_type'] . ' ' . $data['doc_series'] . ' ' . $data['doc_number']; ?></td>
-                        <td><?php echo $data['sobstv_surname'] . ' ' . mb_substr($data['sobstv_name'], 0, 1, 'UTF-8') . '. ' . mb_substr($data['sobstv_patronymic'], 0, 1, 'UTF-8') . '.'; ?></td>
-                        <td><?php echo $data['strah_surname'] . ' ' . mb_substr($data['strah_name'], 0, 1, 'UTF-8') . '. ' . mb_substr($data['strah_patronymic'], 0, 1, 'UTF-8') . '.'; ?></td>
-                        <td><?php echo $data['driver_surname'] . ' ' . mb_substr($data['driver_name'], 0, 1, 'UTF-8') . '. ' . mb_substr($data['driver_patronymic'], 0, 1, 'UTF-8') . '.'; ?></td>
-                        <td><?php echo $data['driver_date_vidach_vu'] . ' ' . $data['driver_series_vu'] . ' ' . $data['driver_number_vu']; ?></td>
-                        <td><?php echo $data['gos_znak']; ?></td>
-                        <td><?php echo $data['pricep']; ?></td>
-                        <td><?php echo $data['srok_strah']; ?></td>
-                        <td><?php echo $data['strah_premiya']; ?></td>
-                    </tr>
-                <?php }
-                ?>
-            </table>
-        <?php
-        } else {
-            echo "<p style='margin-top: 10px;'>Нет данных</p>";
-        }
-        ?>
-
         <h4 style="margin-top: 30px;">Отказаны</h4>
         <?php
         $row_data = mysqli_query($db, "SELECT * FROM `request` WHERE `status`='Отказана'");
@@ -205,7 +158,52 @@
             echo "<p style='margin-top: 10px;'>Нет данных</p>";
         }
         ?>
-
+        <h4 style="margin-top: 30px;">Одобрены</h4>
+        <?php
+        $row_data = mysqli_query($db, "SELECT * FROM `request` WHERE `status`='Одобрена'");
+        if (mysqli_num_rows($row_data) > 0) {
+        ?>
+            <table style="margin-top: 10px;">
+                <tr>
+                    <th>ID</th>
+                    <th>Авто</th>
+                    <th>Мощность</th>
+                    <th>VIN</th>
+                    <th>Документ на авто</th>
+                    <th>Собственник</th>
+                    <th>Страхователь</th>
+                    <th>Водитель</th>
+                    <th>Данные о ВУ</th>
+                    <th>Гос. номер</th>
+                    <th>Прицеп</th>
+                    <th>Cрок страхования (мес.)</th>
+                    <th>Страховая премия</th>
+                </tr>
+                <?php
+                while ($data = mysqli_fetch_array($row_data)) { ?>
+                    <tr>
+                        <td><?php echo $data['id']; ?></td>
+                        <td><?php echo isset($marks_array[$data['marka']]) ? $marks_array[$data['marka']] . ' ' . (isset($models_array[$data['model']]) ? $models_array[$data['model']] : '') : ''; ?></td>
+                        <td><?php echo $data['power']; ?></td>
+                        <td><?php echo $data['VIN']; ?></td>
+                        <td><?php echo $data['doc_type'] . ' ' . $data['doc_series'] . ' ' . $data['doc_number']; ?></td>
+                        <td><?php echo $data['sobstv_surname'] . ' ' . mb_substr($data['sobstv_name'], 0, 1, 'UTF-8') . '. ' . mb_substr($data['sobstv_patronymic'], 0, 1, 'UTF-8') . '.'; ?></td>
+                        <td><?php echo $data['strah_surname'] . ' ' . mb_substr($data['strah_name'], 0, 1, 'UTF-8') . '. ' . mb_substr($data['strah_patronymic'], 0, 1, 'UTF-8') . '.'; ?></td>
+                        <td><?php echo $data['driver_surname'] . ' ' . mb_substr($data['driver_name'], 0, 1, 'UTF-8') . '. ' . mb_substr($data['driver_patronymic'], 0, 1, 'UTF-8') . '.'; ?></td>
+                        <td><?php echo $data['driver_date_vidach_vu'] . ' ' . $data['driver_series_vu'] . ' ' . $data['driver_number_vu']; ?></td>
+                        <td><?php echo $data['gos_znak']; ?></td>
+                        <td><?php echo $data['pricep']; ?></td>
+                        <td><?php echo $data['srok_strah']; ?></td>
+                        <td><?php echo $data['strah_premiya']; ?></td>
+                    </tr>
+                <?php }
+                ?>
+            </table>
+        <?php
+        } else {
+            echo "<p style='margin-top: 10px;'>Нет данных</p>";
+        }
+        ?>
     </div>
     <script src="/mdb/js/mdb.min.js"></script>
 </body>

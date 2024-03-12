@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="../../mdb/css/mdb.min.css" />
 <link rel="stylesheet" href="../../mdb/css/icons.css">
+<title>Собственники-Таблица</title>
 <div>
     <?
     include $_SERVER["DOCUMENT_ROOT"] . "/connect.php";
@@ -24,7 +25,9 @@
             width: 100%;
         }
     </style>
-    <table style="margin-top:61.6px ;">
+<h3 style="margin-top:61.6px; margin-left: 10px;">Таблица - Собственники</h3>
+<!-- <table style="margin-top:61.6px ;"> -->
+<table style="margin-top:10px ;">
         <tr>
             <th>✖</th>
             <th>✓</th>
@@ -56,6 +59,14 @@
             </form>
         <? } ?>
         <form action="insert_sobstvennic.php" method="post">
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Отчество</th>
+        </tr>
             <tr>
                 <td></td>
                 <td><input type="submit" value="+"></td>

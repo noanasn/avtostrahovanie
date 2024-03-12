@@ -38,7 +38,7 @@ require "../../../header.php";
         <label class="form-label select-label">Год</label>
         <select class="select" name="year">
             <?php
-            for ($year = 2023; $year >= 1982; $year--) {
+            for ($year = 2024; $year >= 1982; $year--) {
                 if ($_POST['year'] == $year) {
                     echo "<option value='$year' selected>$year</option>";
                 }

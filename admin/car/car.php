@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="../../mdb/css/mdb.min.css" />
 <link rel="stylesheet" href="../../mdb/css/icons.css">
+<title>Автомобили-Таблица</title>
 <?
 include $_SERVER["DOCUMENT_ROOT"] . "/connect.php";
 session_start();
@@ -10,20 +11,23 @@ $cars_of_data = mysqli_query($db, "SELECT * FROM `avto`");
 <style>
     td {
         padding: 8px;
-        text-align: left;
+        text-align: center;
         border: 1px solid #ddd;
     }
+
     th {
         padding: 8px;
         text-align: center;
         border: 1px solid #ddd;
     }
+
     input[type="text"] {
         width: 100%;
     }
 </style>
-
-<table style="margin-top:61.6px ;">
+<h3 style="margin-top:61.6px; margin-left: 10px;">Таблица - Автомобили</h3>
+<!-- <table style="margin-top:61.6px ;"> -->
+<table style="margin-top:10px ;">
     <tr>
         <th scope='col'>✖</th>
         <th scope='col'>✓</th>
@@ -121,6 +125,21 @@ $cars_of_data = mysqli_query($db, "SELECT * FROM `avto`");
     <? } ?>
     <form action="insert_car.php" method="post">
         <tr>
+            <th scope='col'></th>
+            <th scope='col'></th>
+            <th scope='col'></th>
+            <th scope='col'>Прицеп</th>
+            <th width="200px" scope='col'>VIN</th>
+            <th scope='col'>Гос.Номер</th>
+            <th scope='col'>Мощность</th>
+            <th scope='col'>Тип документа</th>
+            <th scope='col'>Серия документа</th>
+            <th scope='col'>Номер документа</th>
+            <th scope='col'>Марка</th>
+            <th scope='col'>Модель</th>
+            <th scope='col'>Собственник</th>
+        </tr>
+        <tr>
             <td></td>
             <td><input type="submit" value="+"></td>
             <input type="hidden" name='insert'>
@@ -131,7 +150,7 @@ $cars_of_data = mysqli_query($db, "SELECT * FROM `avto`");
             <th scope='col'><input type="text" name="power"></th>
             <!-- <th scope='col'><input type="text" name="doc_type"></th> -->
             <th scope='col'>
-            <select style="width: 100%;" name="doc_type">
+                <select style="width: 100%;" name="doc_type">
                     <option value="СТС">СТС</option>
                     <option value="ПТС">ПТС</option>
                 </select>

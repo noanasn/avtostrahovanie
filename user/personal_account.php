@@ -66,7 +66,6 @@ require "../header.php";
                         <th>Фамилия</th>
                         <th>Имя</th>
                         <th>Отчество</th>
-                        <th>Дата рождения</th>
                         <th>Логин</th>
                         <th>Пароль</th>
                     </tr>
@@ -77,7 +76,6 @@ require "../header.php";
                             <td><? echo $user['Surname'] ?></td>
                             <td><? echo $user['Name'] ?></td>
                             <td><? echo $user['Patronymic'] ?></td>
-                            <td><? echo $user['Birthday'] ?></td>
                             <td><? echo $user['Login'] ?></td>
                             <td><? echo $user['Password'] ?></td>
                         </tr>
@@ -221,7 +219,7 @@ require "../header.php";
                         echo "</table>"; ?>
                 <form action="export_to_word.php" method="post">
                     <td>
-                        <button type="submit" name="export" class="btn btn-dark btn-floating"><i class="fas fa-print fa-lg"></i>
+                        <button style="margin-left: 10px;" type="submit" name="export" class="btn btn-dark btn-floating"><i class="fas fa-print fa-lg"></i>
                             <input type="hidden" name="strah_polis_id_for_export" value=<? echo $id; ?>>
                             <input type="hidden" name="export" id="export_btn">
                     </td>

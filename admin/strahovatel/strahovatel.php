@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="../../mdb/css/mdb.min.css" />
 <link rel="stylesheet" href="../../mdb/css/icons.css">
+<title>Страхователи-Таблица</title>
 <div>
     <?
     include $_SERVER["DOCUMENT_ROOT"] . "/connect.php";
@@ -24,7 +25,9 @@
             width: 100%;
         }
     </style>
-    <table style="margin-top:61.6px ;">
+<h3 style="margin-top:61.6px; margin-left: 10px;">Таблица - Страхователи</h3>
+<!-- <table style="margin-top:61.6px ;"> -->
+<table style="margin-top:10px ;">
         <tr>
             <th>✖</th>
             <th>✓</th>
@@ -32,6 +35,9 @@
             <th>Фамилия</th>
             <th>Имя</th>
             <th>Отчество</th>
+            <th>Логин</th>
+            <th>Пароль</th>
+            <th>Статус</th>
         </tr>
         <? while ($avtostrahovatel = mysqli_fetch_array($strahov_of_data)) { ?>
             <tr>
@@ -52,10 +58,24 @@
                     <td><input type="text" name="Surname" value=<? echo $avtostrahovatel['Surname'] ?>></td>
                     <td><input type="text" name="Name" value=<? echo $avtostrahovatel['Name'] ?>></td>
                     <td><input type="text" name="Patronymic" value=<? echo $avtostrahovatel['Patronymic'] ?>></td>
+                    <td><input type="text" name="Login" value=<? echo $avtostrahovatel['login'] ?>></td>
+                    <td><input type="text" name="Password" value=<? echo $avtostrahovatel['password'] ?>></td>
+                    <td><input type="text" name="Status" disabled value=<? echo $avtostrahovatel['status'] ?>></td>
             </tr>
             </form>
         <? } ?>
         <form action="insert_strahovatel.php" method="post">
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Отчество</th>
+            <th>Логин</th>
+            <th>Пароль</th>
+            <th>Статус</th>
+        </tr>
             <tr>
                 <td></td>
                 <td><input type="submit" value="+"></td>
@@ -64,6 +84,9 @@
                 <td><input type="text" name="insert_surname"></td>
                 <td><input type="text" name="insert_name"></td>
                 <td><input type="text" name="insert_patronymic"></td>
+                <td><input type="text" name="insert_login"></td>
+                <td><input type="text" name="insert_password"></td>
+                <td><input type="text" value="Страхователь" disabled></td>
             </tr>
         </form>
     </table>

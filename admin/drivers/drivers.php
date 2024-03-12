@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="../../mdb/css/mdb.min.css" />
 <link rel="stylesheet" href="../../mdb/css/icons.css">
+<title>Водители-Таблица</title>
 <div>
     <?
     include $_SERVER["DOCUMENT_ROOT"] . "/connect.php";
@@ -25,7 +26,9 @@
         }
     </style>
 
-    <table style="margin-top:61.6px ;">
+<h3 style="margin-top:61.6px; margin-left: 10px;">Таблица - Водители</h3>
+<!-- <table style="margin-top:61.6px ;"> -->
+<table style="margin-top:10px ;">
         <tr>
             <th>✖</th>
             <th>✓</th>
@@ -63,6 +66,17 @@
             </form>
         <? } ?>
         <form action="insert_drivers.php" method="post">
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>Фамилия</th>
+                <th>Имя</th>
+                <th>Отчество</th>
+                <th>Серия ВУ</th>
+                <th>Номер ВУ</th>
+                <th>Дата выдачи ВУ</th>
+            </tr>
             <tr>
                 <td></td>
                 <td><input type="submit" value="+"></td>
