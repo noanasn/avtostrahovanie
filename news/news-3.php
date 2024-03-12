@@ -101,7 +101,7 @@
         </div>
     </div>
     <?php include "../footer.php"; ?>
-    <script src="mdb/js/mdb.min.js"></script>
+    <script src="/mdb/js/mdb.min.js"></script>
 </body>
 
 </html>

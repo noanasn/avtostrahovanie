@@ -8,9 +8,7 @@ $otch = $_POST['otchu'];
 $status = 'Пользователь';
 $login = $_POST['log'];
 $pass = $_POST['pass'];
-$birth = $_POST['birth'];
-$VIN = $_POST['VIN'];
-$queryuser = mysqli_query($db,"INSERT INTO avtostrah.user (Surname,Name,Patronymic,Birthday,Login,Password,Status,VIN) VALUES ('$famu','$nameu','$otch','$birth','$login','$pass','$status','$VIN')");
+$queryuser = mysqli_query($db,"INSERT INTO avtostrah.user (Surname,Name,Patronymic,Login,Password,Status) VALUES ('$famu','$nameu','$otch','$login','$pass','$status')");
 
 if($queryuser){
     echo "<script>alert('Регистрация прошла успешно')</script>";

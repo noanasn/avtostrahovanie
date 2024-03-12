@@ -10,10 +10,21 @@ if (isset($_POST['accept'])) {
         '$request[sobstv_name]',
         '$request[sobstv_patronymic]');") or die(mysqli_error($db));
 
-    mysqli_query($db, "INSERT INTO `strahovatel` ( `Surname`,`Name`,`Patronymic`) VALUES ( 
+    $data = mysqli_query($db, "SELECT * FROM `user` WHERE 
+    `Surname` = '$request[strah_surname]' AND `Name` = '$request[strah_name]' AND `Patronymic` = '$request[strah_patronymic]' ;");
+    $row_data = mysqli_fetch_array($data);
+    $idUserToStrah = $row_data['id'];
+    $LoginUserToStrah = $row_data['Login'];
+    $PassUserToStrah = $row_data['Password'];
+
+    mysqli_query($db, "INSERT INTO `strahovatel` ( `Surname`,`Name`,`Patronymic`,`login`,`password`) VALUES ( 
         '$request[strah_surname]',
         '$request[strah_name]',
-        '$request[strah_patronymic]');") or die(mysqli_error($db));
+        '$request[strah_patronymic]',
+        '$LoginUserToStrah',
+        '$PassUserToStrah');") or die(mysqli_error($db));
+
+    mysqli_query($db, "DELETE FROM `user` WHERE id = '$idUserToStrah';")or die(mysqli_error($db));    
 
     mysqli_query($db, "INSERT INTO `drivers` ( `Surname`,`Name`, `Patronymic`,`Series_VU`,`Number_VU`,`Date_Vidach_VU`) VALUES ( 
         '$request[driver_surname]',
@@ -52,8 +63,8 @@ if (isset($_POST['accept'])) {
     $SP_number_str = $first_numb . $next_numb;
     $SP_number = (int)$SP_number_str;
 
-    $strah_ot = date('Y-m-d', strtotime('+1 day'));
-    $strah_do = date('Y-m-d', strtotime('+1 day +' . $request['srok_strah'] . ' months'));
+    $strah_ot = date('Y-m-d', strtotime('+3 day'));
+    $strah_do = date('Y-m-d', strtotime('+3 day +' . $request['srok_strah'] . ' months'));
     $date_zakluch = date('Y-m-d');
     $date_vidach = date('Y-m-d', strtotime('+1 day'));
 

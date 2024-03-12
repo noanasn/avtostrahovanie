@@ -87,11 +87,36 @@
                       Заявки</a>
                 </li>
               </ul>';
-            } else {
+            } else if ($_SESSION['status_user']  == 'Оператор'){
+              echo '
+              <ul class="navbar-nav">
+               <!-- Раздел отчеты-->
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                    Отчеты</a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li>
+                      <a class="dropdown-item" href="/admin/reports/SP_za_period/SP_za_period.php">СП оформленные за период</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="/admin/reports/SP_po_sotr/SP_po_sotr.php">СП оформленные сотрудником</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                      <a class="nav-link dropdown d-flex align-items-center" href="/admin/zhurnal/strah_polis_zh.php" id="navbarDropdownMenuLink" role="button" aria-expanded="false">
+                      Журнал операций</a>
+                </li>
+                <li class="nav-item dropdown">
+                      <a class="nav-link dropdown d-flex align-items-center" href="/admin/requests/requests.php" id="navbarDropdownMenuLink" role="button" aria-expanded="false">
+                      Заявки</a>
+                </li>
+              </ul>';
+            }
+            else{
               // Если 'login' не равен 'admin', не показывать элемент
             }
             ?>
-            <!-- эксперименты -->
           </ul>
           <!-- Left links -->
         </div>
@@ -100,7 +125,8 @@
         <!-- Right elements -->
         <div class="d-flex align-items-center">
           <!-- Icon -->
-          <a class="nav-link mx-3" href="/user/personal_account_strah.php"><? if ($_SESSION['status_user']  == 'Администратор') {
+          <a class="nav-link mx-3" href="<?if (($_SESSION['status_user']  == 'Пользователь') or ($_SESSION['status_user']  == 'Страхователь')) {
+                echo '/user/personal_account.php';} else{}?>"><? if ($_SESSION['status_user']  == 'Администратор') {
                                                           echo 'Администратор';
                                                         } else {
                                                           echo $_SESSION['login_user'];
@@ -122,7 +148,7 @@
               </li>
               <? if (($_SESSION['status_user']  == 'Пользователь') or ($_SESSION['status_user']  == 'Страхователь')) {
                 echo '<li>
-                <a class="dropdown-item" href="/user/personal_account_strah.php">Личный кабинет</a>
+                <a class="dropdown-item" href="/user/personal_account.php">Личный кабинет</a>
               </li>';
               } else {
               } ?>

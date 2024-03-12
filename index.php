@@ -16,12 +16,14 @@
 <body>
     <?php include "header.php"; ?>
     <!-- Акции -->
-    <div class="container" style ="margin-top: 61px">
+    <div class="container" style="margin-top: 61px">
         <div class="row">
             <!-- Колонка с текстом -->
             <div class="col-md-4">
-                <h2>Акции</h2>
-                <p>Здесь может быть описание ваших акций.</p>
+                <h2 style="margin-bottom: 20px;">Акции</h2>
+                <p><b>&#171;Безопасное вождение&#187;</b><br>Клиенты, которые успешно завершают курс по безопасному вождению, получают скидку на ОСАГО или дополнительные бонусы.</p>
+                <p><b>&#171;Безаварийное вождение&#187;</b><br>При условии отсутствия ДТП за год предоставляется скидка на ОСАГО или дополнительные услуги.</p>
+                <p><b>&#171;Бесплатный технический осмотр&#187;</b><br>При оформлении ОСАГО предоставляется бесплатный технический осмотр автомобиля в выбранном сервисном центре.</p>
             </div>
             <!-- Родительский контейнер для слайдера -->
             <div class="col-md-8">
@@ -35,13 +37,13 @@
                         </div>
                         <div class="carousel-inner">
                             <div class="carousel-item active" data-mdb-interval="3000">
-                                <img src="/img/москвич 3е.jpg" class="d-block w-100" alt="Wild Landscape" style="height: 500px;" />
+                                <img src="/img/moskvich_text.jpg" class="d-block w-100" alt="Wild Landscape" style="height: 500px;" />
                             </div>
                             <div class="carousel-item" data-mdb-interval="3000">
-                                <img src="/img/москвич 3.jpg" class="d-block w-100" alt="Camera" style="height: 500px;" />
+                                <img src="/img/uaz_text.jpg" class="d-block w-100" alt="Camera" style="height: 500px;" />
                             </div>
                             <div class="carousel-item" data-mdb-interval="3000">
-                                <img src="/img/москвич 6.jpg" class="d-block w-100" alt="Exotic Fruits" style="height: 500px;" />
+                                <img src="/img/lada_text.jpg" class="d-block w-100" alt="Exotic Fruits" style="height: 500px;" />
                             </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleIndicators" data-mdb-slide="prev">
@@ -97,7 +99,7 @@
             </div>
         </div>
         <div class="text-end" style="margin-bottom: 20px;">
-        <a href="/news/news.php" class="btn btn-outline-dark">Читать новости</a>
+            <a href="/news/news.php" class="btn btn-outline-dark">Читать новости</a>
         </div>
     </div>
     <!-- Калькулятор -->

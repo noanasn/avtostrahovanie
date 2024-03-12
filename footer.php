@@ -9,9 +9,7 @@
                     <!-- Grid column -->
                     <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                         <!-- Content -->
-                        <h6 class="text-uppercase fw-bold mb-4">
-                            <i class="fas fa-gem me-3"></i>Автострахование
-                        </h6>
+                        <h6 class="text-uppercase fw-bold mb-4">Автострахование</h6>
                         <p>
                             Компания, которая выделяется своими персонализированным подходом к каждому клиенту,превосходит ожидания своих клиентов, предлагая высококачественное обслуживание и обеспечивая надежную защиту и уверенность на дорогах.
                         </p>
@@ -19,8 +17,7 @@
                     <!-- Grid column -->
 
                     <!-- Grid column -->
-                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                        <!-- Links -->
+                    <!-- <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
                         <h6 class="text-uppercase fw-bold mb-4">
                             Products
                         </h6>
@@ -36,12 +33,11 @@
                         <p>
                             <a href="#!" class="text-reset">Laravel</a>
                         </p>
-                    </div>
+                    </div> -->
                     <!-- Grid column -->
 
                     <!-- Grid column -->
-                    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                        <!-- Links -->
+                    <!-- <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
                         <h6 class="text-uppercase fw-bold mb-4">
                             Useful links
                         </h6>
@@ -57,7 +53,7 @@
                         <p>
                             <a href="#!" class="text-reset">Help</a>
                         </p>
-                    </div>
+                    </div> -->
                     <!-- Grid column -->
 
                     <!-- Grid column -->

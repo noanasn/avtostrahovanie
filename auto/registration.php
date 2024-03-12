@@ -59,22 +59,22 @@
                         <label class="form-label" for="patronymic">Отчество</label>
                       </div>
                     </div>
-                    <div class="col-md-6 mb-4">
+                    <!-- <div class="col-md-6 mb-4">
                       <div class="form-outline">
                         <input type="date" id="birthday" name="birth" class="form-control" required/>
                         <label class="form-label" for="birthday">Дата рождения</label>
                       </div>
-                    </div>
+                    </div> -->
                   </div>
 
-                  <div class="row">
+                  <!-- <div class="row">
                     <div class="col-md-12 mb-4">
                       <div class="form-outline">
                         <input type="tel" id="numberavto" name="VIN" class="form-control" maxlength="17"/>
                         <label class="form-label" for="numberavto">VIN автомобиля</label>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
 
                   <div class="row text-center">
                     <div class="col-12">

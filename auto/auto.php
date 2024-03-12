@@ -37,10 +37,9 @@
                                         <button class="btn btn-outline-dark" name="form_auth_submit" type="submit">Войти</button>
 
                                     </div>
-
-                                    <!-- <div>
-                                        <p class="mb-0">Don't have an account? <a href="#!" class="text-body fw-bold">Sign Up</a></p>
-                                    </div> -->
+                                    <div>
+                                        <p class="mb-0">Нет аккаунта?<a href="/auto/registration.php" class="text-body fw-bold"> Зарегистрироваться</a></p>
+                                    </div>
 
                                 </div>
                             </div>
