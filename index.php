@@ -133,7 +133,7 @@
                 </div>
 
                 <div class="col-md-6 mb-3">
-                    <label for="carPower" class="form-label">Мощность</label>
+                    <label for="carPower" class="form-label">Мощность двигателя (л.с.)</label>
                     <input type="text" class="form-control" name="carPower" id="carPower" required />
                 </div>
                 <div class="col-md-6 mb-3">
