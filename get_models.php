@@ -10,7 +10,7 @@ if ($db->connect_error) {
 $marka_id = $_GET['marka_id'];
 
 // Подготовка SQL запроса для выборки моделей, связанных с выбранной маркой
-$sql = "SELECT id, Nazvanie FROM model WHERE idMarka = $marka_id";
+$sql = "SELECT id, Nazvanie FROM model WHERE idMarka = $marka_id ORDER BY Nazvanie ASC;";
 
 $result = $db->query($sql);
 

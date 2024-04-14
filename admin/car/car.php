@@ -67,7 +67,7 @@ $cars_of_data = mysqli_query($db, "SELECT * FROM `avto`");
                 <td>
                     <select name="idMarka" id="marka">
                         <?
-                        $marka_row_data  = mysqli_query($db, "SELECT * FROM `marka`");
+                        $marka_row_data  = mysqli_query($db, "SELECT * FROM `marka` ORDER BY `marka`.`Nazvanie` ASC;");
                         while ($marka_data = mysqli_fetch_array($marka_row_data)) {
                             echo "<option value = $marka_data[id]>$marka_data[Nazvanie]</option>";
                         }
@@ -82,7 +82,7 @@ $cars_of_data = mysqli_query($db, "SELECT * FROM `avto`");
                 <td>
                     <select name='idSobstvennic' id='select' class='names'>
                         <?
-                        $sobstv_data  = mysqli_query($db, "SELECT * FROM `sobstvennic`");
+                        $sobstv_data  = mysqli_query($db, "SELECT * FROM `sobstvennic` ORDER BY `sobstvennic`.`Surname` ASC;");
                         while ($sobstv = mysqli_fetch_array($sobstv_data)) {
                             $fio = $sobstv['Surname'] . " " . mb_substr($sobstv['Name'], 0, 1) . "." . mb_substr($sobstv['Patronymic'], 0, 1) . ".";
                             echo "<option value = $sobstv[id]>$fio</option>";
@@ -110,9 +110,9 @@ $cars_of_data = mysqli_query($db, "SELECT * FROM `avto`");
 
         <? while ($cars = mysqli_fetch_array($cars_of_data)) { ?>
             <?
-            $marks_data  = mysqli_query($db, "SELECT * FROM `marka`");
-            $models_data = mysqli_query($db, "SELECT * FROM `model`");
-            $sobstv_data  = mysqli_query($db, "SELECT * FROM `sobstvennic`");
+            $marks_data  = mysqli_query($db, "SELECT * FROM `marka` ORDER BY `marka`.`Nazvanie` ASC;");
+            $models_data = mysqli_query($db, "SELECT * FROM `model` ORDER BY `model`.`Nazvanie` ASC;");
+            $sobstv_data  = mysqli_query($db, "SELECT * FROM `sobstvennic` ORDER BY `sobstvennic`.`Surname` ASC;");
             ?>
 
             <form action="delete_car.php" method="post" id="delete_form">
@@ -149,7 +149,7 @@ $cars_of_data = mysqli_query($db, "SELECT * FROM `avto`");
                 <td><input type='text' name="doc_series" maxlength="4" value=<? echo $cars['Doc_series'] ?>></td>
                 <td><input type='number' name="doc_number" value=<? echo $cars['Doc_number'] ?>></td>
 
-                <td> <select name='idMarka' id='idMarka' class='marka_select'<?php echo $cars['id']; ?>'>
+                <td> <select name='idMarka' id='idMarka' class='marka_select'<?php echo $cars['id']; ?>>
                         <?php
                         while ($marks = mysqli_fetch_array($marks_data)) {
                             if ($cars['idMarka'] === $marks['id']) {
@@ -212,6 +212,47 @@ $cars_of_data = mysqli_query($db, "SELECT * FROM `avto`");
                 }
             });
         });
+    </script>
+    <script>
+        function loadModels(markaSelect, modelSelect) {
+    var selectedMarkaId = markaSelect.val();
+    $.ajax({
+        url: '../../get_models.php',
+        method: 'GET',
+        dataType: 'json',
+        data: {
+            marka_id: selectedMarkaId
+        },
+        success: function(response) {
+            modelSelect.empty();
+            $.each(response, function(index, model) {
+                modelSelect.append($('<option>', {
+                    value: model.id,
+                    text: model.Nazvanie
+                }));
+            });
+        },
+        error: function(xhr, status, error) {
+            console.error(error);
+        }
+    });
+}
+    </script>
+    <script>
+        $(document).ready(function() {
+    $('.marka_select').each(function() {
+        var markaSelect = $(this);
+        var modelSelect = markaSelect.closest('tr').find('.model_select');
+        loadModels(markaSelect, modelSelect);
+    });
+
+    $('.marka_select').change(function() {
+        var markaSelect = $(this);
+        var modelSelect = markaSelect.closest('tr').find('.model_select');
+        loadModels(markaSelect, modelSelect);
+    });
+});
+
     </script>
     <script>
 $(document).ready(function() {
