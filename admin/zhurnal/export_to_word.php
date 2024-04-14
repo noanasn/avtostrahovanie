@@ -1,7 +1,4 @@
 <?
-// echo var_dump($_POST);
-//array(2) { ["export"]=> string(0) "" ["strah_polis_id_for_export"]=> string(1) "6" }
-
 require_once '../../vendor/autoload.php';
 use PhpOffice\PhpWord\TemplateProcessor;
 $templateProcessor = new TemplateProcessor('C:\OSPanel\domains\avtostrahovanie\export\sp_for_export.docx');
@@ -64,8 +61,6 @@ if ($pricep == '0') {
 elseif ($pricep == '1') {
     $pricep ='Да';
 }
-// header('Location: ' . $_SERVER['HTTP_REFERER']);
-// mysqli_free_result($row_data);
 
 $templateProcessor->setValue('sp_series', $sp_series);
 $templateProcessor->setValue('sp_number', $sp_number);
@@ -98,28 +93,4 @@ unlink($tempFile);
 
 mysqli_close($db);
 
-
-
-
-// $hahahah = 'Mirko';
-// $templateProcessor->setValue('first_name', $hahahah);
-
-// $peoples = [
-//     ['number' => '1', 'first_name' => 'Miroslav', 'second_name' => 'Dmitroevich', 'last_name' => 'Zherenkov', 'seria' => 1243, 'number_vu' => 4321, 'class' => 'A'],
-//     ['number' => '2', 'first_name' => 'vasf', 'second_name' => 'sfgeffb', 'last_name' => 'seavf', 'seria' => 1243, 'number_vu' => 4321, 'class' => 'b'],
-//     ['number' => '3', 'first_name' => 'vasf', 'second_name' => 'sfgeffb', 'last_name' => 'seavf', 'seria' => 1243, 'number_vu' => 4321, 'class' => 'c'],
-//     ['number' => '4', 'first_name' => 'vasf', 'second_name' => 'sfgeffb', 'last_name' => 'seavf', 'seria' => 1243, 'number_vu' => 4321, 'class' => 'd'],
-// ];
-
-// $templateProcessor->cloneRowAndSetValues('number', $peoples);
-
-// $tempFile = tempnam(sys_get_temp_dir(), 'document');
-// $templateProcessor->saveAs($tempFile);
-
-// header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document');
-// header('Content-Disposition: attachment; filename="document.docx"');
-
-// readfile($tempFile);
-
-// unlink($tempFile);
 ?>
