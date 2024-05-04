@@ -85,7 +85,7 @@ if (isset($_POST['accept'])) {
     $row_data = mysqli_fetch_array($data);
     $idDriver = $row_data['id']; //idDriver
 
-    echo $idDriver;
+    // echo $idDriver;
 
     $data = mysqli_query($db, "SELECT (`id`) FROM `avto` WHERE 
         `VIN` = '$request[VIN]';");

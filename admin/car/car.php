@@ -29,7 +29,6 @@ $cars_of_data = mysqli_query($db, "SELECT * FROM `avto`");
 
 <body>
     <h3 style="margin-top:61.6px; margin-left: 10px;">Таблица - Автомобили</h3>
-    <!-- <table style="margin-top:61.6px ;"> -->
     <table style="margin-top:10px ;">
         <form action="insert_car.php" method="post">
             <tr>
@@ -54,16 +53,16 @@ $cars_of_data = mysqli_query($db, "SELECT * FROM `avto`");
                 <td></td>
                 <td><input type="checkbox" name="pricep"></td>
                 <td><input type="text" name="vin" maxlength="17" required></td>
-                <td><input type="text" name="gos_znak" maxlength="9" required></td>
-                <td><input type="number" name="power" min="1" required></td>
+                <td><input type="text" name="gos_znak" maxlength="9" style="width: 120px;" required></td>
+                <td><input type="number" name="power" min="1" style="width: 80px;" required></td>
                 <td>
                     <select style="width: 100%;" name="doc_type">
                         <option value="СТС">СТС</option>
                         <option value="ПТС">ПТС</option>
                     </select>
                 </td>
-                <td><input type="text" name="doc_series" maxlength="4" required></td>
-                <td><input type="number" name="doc_number" min="1" required></td>
+                <td><input type="text" name="doc_series" maxlength="4" style="width: 100px;" required></td>
+                <td><input type="number" name="doc_number" min="1" max="999999" style="width: 100px;" required></td>
                 <td>
                     <select name="idMarka" id="marka">
                         <?
@@ -97,7 +96,7 @@ $cars_of_data = mysqli_query($db, "SELECT * FROM `avto`");
             <th>✓</th>
             <th>#</th>
             <th>Прицеп</th>
-            <th style="width: 200px;">VIN</th>
+            <th width="200px">VIN</th>
             <th>Гос.Номер</th>
             <th>Мощность</th>
             <th>Тип документа</th>
@@ -111,7 +110,7 @@ $cars_of_data = mysqli_query($db, "SELECT * FROM `avto`");
         <? while ($cars = mysqli_fetch_array($cars_of_data)) { ?>
             <?
             $marks_data  = mysqli_query($db, "SELECT * FROM `marka` ORDER BY `marka`.`Nazvanie` ASC;");
-            $models_data = mysqli_query($db, "SELECT * FROM `model` ORDER BY `model`.`Nazvanie` ASC;");
+            $models_data = mysqli_query($db, "SELECT * FROM `model`;");
             $sobstv_data  = mysqli_query($db, "SELECT * FROM `sobstvennic` ORDER BY `sobstvennic`.`Surname` ASC;");
             ?>
 
@@ -133,8 +132,8 @@ $cars_of_data = mysqli_query($db, "SELECT * FROM `avto`");
                                                                                                 echo "checked";
                                                                                             } ?>></td>
                 <td><input type='text' name="vin" maxlength="17" value=<? echo $cars['VIN'] ?>></td>
-                <td><input type='text' name="gos_znak" maxlength="9" value=<? echo $cars['Gos_Znak'] ?>></td>
-                <td><input type='number' name="power" value=<? echo $cars['Power'] ?>></td>
+                <td><input type='text' name="gos_znak" maxlength="9" style="width: 120px;" value=<? echo $cars['Gos_Znak'] ?>></td>
+                <td><input type='number' name="power" style="width: 80px;" value=<? echo $cars['Power'] ?>></td>
                 <td><select style="width: 100%;" name="doc_type">
                         <?
                         if ($cars['Doc_type'] === "СТС") {
@@ -146,10 +145,10 @@ $cars_of_data = mysqli_query($db, "SELECT * FROM `avto`");
                         }
                         ?>
                     </select></td>
-                <td><input type='text' name="doc_series" maxlength="4" value=<? echo $cars['Doc_series'] ?>></td>
-                <td><input type='number' name="doc_number" value=<? echo $cars['Doc_number'] ?>></td>
+                <td><input type='text' name="doc_series" maxlength="4" style="width: 100px;" value=<? echo $cars['Doc_series'] ?>></td>
+                <td><input type='number' name="doc_number" max="999999" style="width: 100px;" value=<? echo $cars['Doc_number'] ?>></td>
 
-                <td> <select name='idMarka' id='idMarka' class='marka_select'<?php echo $cars['id']; ?>>
+                <td> <select name='idMarka' id='idMarka' class='marka_select' <?php echo $cars['id']; ?>>
                         <?php
                         while ($marks = mysqli_fetch_array($marks_data)) {
                             if ($cars['idMarka'] === $marks['id']) {
@@ -167,7 +166,6 @@ $cars_of_data = mysqli_query($db, "SELECT * FROM `avto`");
                             if ($cars['idModel'] === $model['id']) {
                                 echo "<option value='{$model['id']}' selected>{$model['Nazvanie']}</option>";
                             } else {
-                                echo "<option value='{$model['id']}'>{$model['Nazvanie']}</option>";
                             }
                         }
                         ?>
@@ -214,73 +212,31 @@ $cars_of_data = mysqli_query($db, "SELECT * FROM `avto`");
         });
     </script>
     <script>
-        function loadModels(markaSelect, modelSelect) {
-    var selectedMarkaId = markaSelect.val();
-    $.ajax({
-        url: '../../get_models.php',
-        method: 'GET',
-        dataType: 'json',
-        data: {
-            marka_id: selectedMarkaId
-        },
-        success: function(response) {
-            modelSelect.empty();
-            $.each(response, function(index, model) {
-                modelSelect.append($('<option>', {
-                    value: model.id,
-                    text: model.Nazvanie
-                }));
-            });
-        },
-        error: function(xhr, status, error) {
-            console.error(error);
-        }
-    });
-}
-    </script>
-    <script>
         $(document).ready(function() {
-    $('.marka_select').each(function() {
-        var markaSelect = $(this);
-        var modelSelect = markaSelect.closest('tr').find('.model_select');
-        loadModels(markaSelect, modelSelect);
-    });
-
-    $('.marka_select').change(function() {
-        var markaSelect = $(this);
-        var modelSelect = markaSelect.closest('tr').find('.model_select');
-        loadModels(markaSelect, modelSelect);
-    });
-});
-
-    </script>
-    <script>
-$(document).ready(function() {
-    $('.marka_select').change(function() {
-        var selectedMarkaId = $(this).val();
-        var modelSelect = $(this).closest('tr').find('.model_select'); // Находим элемент select модели в этой же строке таблицы
-        $.ajax({
-            url: '../../get_models.php',
-            method: 'GET',
-            dataType: 'json',
-            data: {
-                marka_id: selectedMarkaId
-            },
-            success: function(response) {
-                modelSelect.empty();
-                $.each(response, function(index, model) {
-                    modelSelect.append($('<option>', {
-                        value: model.id,
-                        text: model.Nazvanie
-                    }));
+            $('.marka_select').change(function() {
+                var selectedMarkaId = $(this).val();
+                var modelSelect = $(this).closest('tr').find('.model_select'); // Находим элемент select модели в этой же строке таблицы
+                $.ajax({
+                    url: '../../get_models.php',
+                    method: 'GET',
+                    dataType: 'json',
+                    data: {
+                        marka_id: selectedMarkaId
+                    },
+                    success: function(response) {
+                        modelSelect.empty();
+                        $.each(response, function(index, model) {
+                            modelSelect.append($('<option>', {
+                                value: model.id,
+                                text: model.Nazvanie
+                            }));
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
                 });
-            },
-            error: function(xhr, status, error) {
-                console.error(error);
-            }
+            });
         });
-    });
-});
-
     </script>
 </body>
